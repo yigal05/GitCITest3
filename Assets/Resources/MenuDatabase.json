@@ -1,0 +1,25 @@
+﻿{
+  "categories": [
+    {"id": 1, "name": "Principio"},
+    {"id": 2, "name": "Acompañante"},
+    {"id": 3, "name": "Proteina"},
+    {"id": 4, "name": "Sopa"},
+    {"id": 5, "name": "Bebidas"}
+  ],
+  "options": [
+    {"name": "Lentejas", "categoryId": 1, "quantity": 100},
+    {"name": "Frijoles", "categoryId": 1, "quantity": 100},
+    {"name": "Pasta", "categoryId": 1, "quantity": 100},
+    {"name": "Arroz", "categoryId": 2, "quantity": 100},
+    {"name": "Pure", "categoryId": 2, "quantity": 100},
+    {"name": "Pollo", "categoryId": 3, "quantity": 100},
+    {"name": "Cerdo", "categoryId": 3, "quantity": 100},
+    {"name": "Pescado", "categoryId": 3, "quantity": 100},
+    {"name": "Ajiaco", "categoryId": 4, "quantity": 100},
+    {"name": "Sancocho", "categoryId": 4, "quantity": 100},
+    {"name": "Sopa de Pollo", "categoryId": 4, "quantity": 100},
+    {"name": "Limonada", "categoryId": 5, "quantity": 100},
+    {"name": "Mora", "categoryId": 5, "quantity": 100},
+    {"name": "Mango", "categoryId": 5, "quantity": 100}
+  ]
+}

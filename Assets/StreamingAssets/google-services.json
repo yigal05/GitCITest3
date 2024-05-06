@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "737799834196",
+    "firebase_url": "https://lentidatabase-default-rtdb.firebaseio.com",
+    "project_id": "lentidatabase",
+    "storage_bucket": "lentidatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737799834196:android:6670d6c7a73dc641953bc1",
+        "android_client_info": {
+          "package_name": "com.StudioPiGaming.U.Lenti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737799834196-pi80mec6lut4okj2dsj62vnpibg43m9j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.StudioPiGaming.U.Lenti",
+            "certificate_hash": "e8f8a4c52ba4b259cc69d3fc1c238bc9d9e16d35"
+          }
+        },
+        {
+          "client_id": "737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnD-YGa6SfHeNADD_I5cKqY85zNgHeLLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
