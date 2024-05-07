@@ -488,6 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95da81ce3c43f984094adc71ce447638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoogleWebAPI: 737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com
 --- !u!1 &1286306102
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95da81ce3c43f984094adc71ce447638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoogleWebAPI: 737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com
 --- !u!4 &1286306104
 Transform:
   m_ObjectHideFlags: 0
@@ -610,6 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47381126bcb953d4985ec62ee5099892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoogleWebAPI: 737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com
 --- !u!4 &2066534419
 Transform:
   m_ObjectHideFlags: 0
