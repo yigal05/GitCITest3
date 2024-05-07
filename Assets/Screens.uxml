@@ -1,10 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Dise%C3%B1oDeLogin.uss?fileID=7433441132597879392&amp;guid=ea6f3e47a0abadd4e930157cae8f3abb&amp;type=3#DiseñoDeLogin" />
     <ui:VisualElement name="MainContainer" style="flex-grow: 1;">
-        <ui:VisualElement name="loginScreen" style="flex-grow: 1; display: none;">
+        <ui:VisualElement name="loginScreen" style="flex-grow: 1; display: flex;">
             <ui:VisualElement name="Top" style="flex-grow: 0; align-items: center; justify-content: center; height: 45%;">
                 <ui:Button text="DATABASE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="goDatabase" style="width: 80%; margin-left: 13px; margin-bottom: 31px; background-color: rgb(255, 255, 255); -unity-font-style: bold; color: rgb(0, 0, 0); font-size: 30px;" />
-                <ui:VisualElement name="IconMan" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/hombre.png?fileID=2800000&amp;guid=e5e52bb5461b01a45ab5a8854295762e&amp;type=3#hombre&apos;); width: 40%; height: 40%;" />
+                <ui:VisualElement name="IconMan" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/hombre.png?fileID=2800000&amp;guid=e5e52bb5461b01a45ab5a8854295762e&amp;type=3#hombre&quot;); width: 40%; height: 40%;" />
                 <ui:Label tabindex="-1" text="LOGIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text-Login" style="font-size: 27px; -unity-font-style: bold; margin-top: 11px;" />
             </ui:VisualElement>
             <ui:VisualElement name="Bottom" style="flex-grow: 1; align-items: center;">
@@ -15,9 +15,9 @@
                 <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="warnings" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="registerScreen" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="registerScreen" style="flex-grow: 1; display: none;">
             <ui:VisualElement name="Top" style="flex-grow: 0; align-items: center; justify-content: center; height: 45%;">
-                <ui:VisualElement name="IconMan" style="flex-grow: 0; background-image: url(&apos;project://database/Assets/hombre.png?fileID=2800000&amp;guid=e5e52bb5461b01a45ab5a8854295762e&amp;type=3#hombre&apos;); width: 40%; height: 40%;" />
+                <ui:VisualElement name="IconMan" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/hombre.png?fileID=2800000&amp;guid=e5e52bb5461b01a45ab5a8854295762e&amp;type=3#hombre&quot;); width: 40%; height: 40%;" />
                 <ui:Label tabindex="-1" text="SIGN UP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Text-Login" style="font-size: 27px; -unity-font-style: bold; margin-top: 11px;" />
             </ui:VisualElement>
             <ui:VisualElement name="Bottom" style="flex-grow: 1; align-items: center;">

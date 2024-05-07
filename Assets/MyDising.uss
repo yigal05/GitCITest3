@@ -1,0 +1,21 @@
+.ButtonsMenuStyle {
+    font-size: 16px;
+    -unity-font-style: bold;
+    -unity-text-outline-width: 1px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-top: 4px;
+    border-left-width: 7px;
+    border-right-width: 7px;
+    border-top-width: 7px;
+    border-bottom-width: 7px;
+    border-left-color: rgb(38, 37, 36);
+    border-right-color: rgb(38, 37, 36);
+    border-top-color: rgb(38, 37, 36);
+    border-bottom-color: rgb(38, 37, 36);
+    -unity-background-image-tint-color: rgb(255, 139, 88);
+    background-color: rgb(178, 147, 140);
+}
