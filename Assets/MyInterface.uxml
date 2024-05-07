@@ -1,0 +1,240 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/MyDising.uss?fileID=7433441132597879392&amp;guid=e95895cdc4af6d147865ff7059adea93&amp;type=3#MyDising" />
+    <ui:VisualElement name="Alimentos" style="flex-grow: 1; background-color: rgb(255, 255, 255);">
+        <ui:VisualElement name="Start" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch; min-height: 0; min-width: 0;">
+            <ui:VisualElement name="space" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 40%;" />
+            <ui:VisualElement name="buttons" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); justify-content: flex-start; align-items: stretch; margin-left: 2%; margin-right: 2%;">
+                <ui:Button text="Principio" display-tooltip-when-elided="true" name="ButtonPrin" class="ButtonsMenuStyle" />
+                <ui:Button text="Acompañante" display-tooltip-when-elided="true" name="ButtonAcom" class="ButtonsMenuStyle" />
+                <ui:Button text="Proteina" display-tooltip-when-elided="true" name="ButtonPro" class="ButtonsMenuStyle" />
+                <ui:Button text="Sopas" display-tooltip-when-elided="true" name="ButtonSo" class="ButtonsMenuStyle" />
+                <ui:Button text="Bebidas" display-tooltip-when-elided="true" name="ButtonBe" class="ButtonsMenuStyle" />
+            </ui:VisualElement>
+            <ui:Button text="COMPRAR" display-tooltip-when-elided="true" name="Comprar" style="margin-top: 40px; border-top-left-radius: 13px; border-bottom-left-radius: 13px; border-top-right-radius: 13px; border-bottom-right-radius: 13px; border-left-width: 5px; border-right-width: 5px; border-top-width: 5px; border-bottom-width: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(83, 70, 183); color: rgb(255, 255, 255); font-size: 24px; -unity-font-style: bold; display: none;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Principal" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: none;">
+            <ui:VisualElement name="head" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; height: 15%;">
+                <ui:VisualElement name="namePage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 55%; width: 100%; flex-direction: row; justify-content: flex-start; align-items: center; padding-left: 11px; padding-right: 11px; padding-top: 11px; padding-bottom: 11px;">
+                    <ui:VisualElement name="GoBack" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/445cf15c87cdc93411893e09714ca752.svg?fileID=7388822144124034973&amp;guid=ef6d93d696cfb5541ae9b23f9546f2d0&amp;type=3#445cf15c87cdc93411893e09714ca752&apos;); height: 28px; width: 25px;" />
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; justify-content: center; -unity-font-style: bold;">
+                        <ui:Label tabindex="-1" text="Main  Course" display-tooltip-when-elided="true" name="pageTitle" style="font-size: 23px; -unity-text-align: middle-left; color: rgb(0, 0, 0);" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Choose" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); padding-left: 10px; color: rgb(255, 255, 255); font-size: 38px; -unity-font-style: normal; -unity-text-align: middle-left; justify-content: center; align-items: flex-start; padding-top: 6px; padding-right: 0;">
+                    <ui:Label tabindex="-1" text="Choose one" display-tooltip-when-elided="true" style="font-size: 22px; color: rgb(0, 0, 0); -unity-font-style: bold;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Principio" vertical-scroller-visibility="Hidden" style="height: 70%; width: 100%; background-color: rgba(65, 65, 65, 0); display: none; padding-left: 2%; padding-right: 2%;">
+                <ui:VisualElement name="Lentejas" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="LENTEJAS" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Frijoles" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Frijoles" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Pasta" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Pasta" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Acompanante" vertical-scroller-visibility="Hidden" style="height: 70%; width: 100%; background-color: rgba(65, 65, 65, 0); display: none; padding-left: 2%; padding-right: 2%; opacity: 1;">
+                <ui:VisualElement name="Arroz" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="ARROZ" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Pure" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="PURE" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Proteina" vertical-scroller-visibility="Hidden" style="height: 70%; width: 100%; background-color: rgba(65, 65, 65, 0); display: none; padding-left: 2%; padding-right: 2%;">
+                <ui:VisualElement name="Pollo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row; display: flex;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="POLLO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Cerdo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row; display: flex;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="CERDO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Pescado" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="PESCADO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Pavo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="PAVO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Huevo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="HUEVO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Sopas" vertical-scroller-visibility="Hidden" style="height: 70%; width: 100%; background-color: rgba(65, 65, 65, 0); display: none; padding-left: 2%; padding-right: 2%;">
+                <ui:VisualElement name="Ajiaco" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="AJIACO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Sancocho" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="SANCOCHO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="SopaPollo" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="SOPA DE POLLO" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" name="Bebidas" vertical-scroller-visibility="Hidden" style="height: 70%; width: 100%; background-color: rgba(65, 65, 65, 0); display: none; padding-left: 2%; padding-right: 2%;">
+                <ui:VisualElement name="Limonada" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row; display: flex;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Limonada" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Mora" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row; display: flex;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Mora" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Mango" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Mango" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Fresa" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row; display: flex;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Fresa" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76); display: flex;" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="Cafe" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 172px; width: 100%; flex-direction: row;">
+                    <ui:VisualElement name="Text" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-items: flex-end;">
+                        <ui:VisualElement name="TextContainer" style="flex-grow: 0; background-color: rgba(255, 255, 255, 0); width: 90%; height: 90%; align-items: flex-start; left: -10px;">
+                            <ui:Label tabindex="-1" text="Café" display-tooltip-when-elided="true" name="DishTitle" style="font-size: 14px; color: rgb(178, 122, 76);" />
+                            <ui:Label tabindex="-1" text="French green lentils, roasted mushrooms, cumin and coriander vinaigrette" display-tooltip-when-elided="true" name="DishDescription" style="flex-wrap: nowrap; white-space: normal; font-size: 14px; color: rgb(152, 78, 16);" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Image" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 60%; height: 100%; justify-content: center; align-items: center;">
+                        <ui:VisualElement name="DishImage" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&apos;); width: 89%; height: 90%; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:VisualElement name="Add" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); align-items: center; justify-content: center;">
+                <ui:Button text="ADD TO CART" display-tooltip-when-elided="true" style="width: 90%; background-color: rgb(207, 97, 0); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 45px; font-size: 15px; color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

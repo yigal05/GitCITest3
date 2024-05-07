@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using TMPro;
 using Firebase.Extensions;
 using Firebase.Auth;
 using Firebase;
@@ -43,6 +41,9 @@ public class emailPassLogin : MonoBehaviour
     private Label lb_goLogin;
     private Label lb_warningSignUp;
     private Button bt_googleLoginButton;
+
+    public VisualTreeAsset foods;
+    public UIDocument interfaces;
 
 
 
@@ -380,7 +381,9 @@ public class emailPassLogin : MonoBehaviour
 
         if (user.IsEmailVerified)
         {
+            
             SetLoginStatus("Inicio de sesión exitoso.");
+            EnterInApp();
         }
         else
         {
@@ -438,15 +441,18 @@ public class emailPassLogin : MonoBehaviour
                 user = auth.CurrentUser;
 
                 lb_warningSignUp.text = "Inicio de sesión exitoso";
+                EnterInApp();
 
 
             });
         }
     }
 
-    void Prueba(ClickEvent evt)
+    void EnterInApp()
     {
-        lb_warningSignUp.text = "Inicio de sesión exitoso";
+        interfaces.visualTreeAsset = foods;
+        Objects comida = GetComponent<Objects>();
+        comida.enabled = true;
     }
 
     #endregion
