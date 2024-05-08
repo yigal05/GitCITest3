@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
@@ -15,7 +15,6 @@ public class OrderManager : MonoBehaviour
     public TMP_Text orderStatusText;
 
     // Método para manejar el pedido de un elemento
-    // Método para manejar el pedido de un elemento
     public void OrderItem(string itemName)
     {
         // Llama a GetMenuOptions con una función de devolución de llamada
@@ -24,7 +23,7 @@ public class OrderManager : MonoBehaviour
             if (options != null)
             {
                 // Busca el elemento en la lista de opciones
-                MenuManager.MealOption item = options.Find(option => option.name.Equals(itemName));
+                MealOption item = options.Find(option => option.name.Equals(itemName));
 
                 if (item != null)
                 {
@@ -68,6 +67,4 @@ public class OrderManager : MonoBehaviour
             Debug.LogError("El objeto de texto del estado del pedido no está asignado en el Inspector de Unity.");
         }
     }
-
 }
-*/

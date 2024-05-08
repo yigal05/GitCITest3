@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -439,6 +439,9 @@ GameObject:
   - component: {fileID: 1078868200}
   - component: {fileID: 1078868202}
   - component: {fileID: 1078868203}
+  - component: {fileID: 1078868205}
+  - component: {fileID: 1078868204}
+  - component: {fileID: 1078868206}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -490,6 +493,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoogleWebAPI: 737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com
+  foods: {fileID: 9197481963319205126, guid: f8f24d91a9e43fc498e8c7b25c20fe2d, type: 3}
+  interfaces: {fileID: 1078868200}
+--- !u!114 &1078868203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078868199}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a799aeaf9d6701d4b8445c7ca2b5bd02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1078868204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078868199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0444292b13bf6428e24bebff8b3994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuManager: {fileID: 1078868205}
+  orderStatusText: {fileID: 0}
+--- !u!114 &1078868205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078868199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde2551345c051c488967b75d9fef97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1078868206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078868199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3248fee131ed4f9cabc1e0eaf00f0751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1286306102
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GoogleWebAPI: 737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com
+  foods: {fileID: 0}
+  interfaces: {fileID: 0}
 --- !u!4 &1286306104
 Transform:
   m_ObjectHideFlags: 0

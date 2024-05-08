@@ -10,11 +10,14 @@ public class Objects : MonoBehaviour
     private VisualElement currentScreen;
     private Label pageTitle;
     private Button comprar;
-    
+    private OrderManager ordenar;
+
+
     public static int selectPlate;
     
     private void OnEnable()
     {
+        ordenar = GetComponent<OrderManager>();
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         foodsScreen = root.Q<VisualElement>("Principal");
         starScreen = root.Q<VisualElement>("Start");
@@ -37,28 +40,28 @@ public class Objects : MonoBehaviour
         
         //platos 
 
-        Dish lentejas = new Dish(root, "Lentejas","lentejas", principio.getButton());
-        Dish frijoles = new Dish(root, "Frijoles","Frijoles", principio.getButton());
-        Dish pasta = new Dish(root, "Pasta","Pasta", principio.getButton());
+        Dish lentejas = new Dish(root, "Lentejas","Lentejas", principio.getButton(), ordenar);
+        Dish frijoles = new Dish(root, "Frijoles","Frijoles", principio.getButton(), ordenar);
+        Dish pasta = new Dish(root, "Pasta","Pasta", principio.getButton(), ordenar);
         
-        Dish Arroz = new Dish(root, "Arroz","Arroz", acompanante.getButton());
-        Dish Pure = new Dish(root, "Pure","Pure", acompanante.getButton());
+        Dish Arroz = new Dish(root, "Arroz","Arroz", acompanante.getButton(), ordenar);
+        Dish Pure = new Dish(root, "Pure","Pure", acompanante.getButton(), ordenar);
         
-        Dish pollo = new Dish(root, "Pollo","Pollo", proteina.getButton());
-        Dish cerdo = new Dish(root, "Cerdo","Cerdo", proteina.getButton());
-        Dish pavo = new Dish(root, "Pavo","Pavo", proteina.getButton());
-        Dish pescado = new Dish(root, "Pescado","Pescado", proteina.getButton());
-        Dish huevo = new Dish(root, "Huevo","Huevo", proteina.getButton());
+        Dish pollo = new Dish(root, "Pollo","Pollo", proteina.getButton(), ordenar);
+        Dish cerdo = new Dish(root, "Cerdo","Cerdo", proteina.getButton(), ordenar);
+        Dish pavo = new Dish(root, "Pavo","Pavo", proteina.getButton(), ordenar);
+        Dish pescado = new Dish(root, "Pescado","Pescado", proteina.getButton(), ordenar);
+        Dish huevo = new Dish(root, "Huevo","Huevo", proteina.getButton(), ordenar);
         
-        Dish sancocho = new Dish(root, "Sancocho","Sancocho", sopa.getButton());
-        Dish ajiaco = new Dish(root, "Ajiaco","Ajiaco", sopa.getButton());
-        Dish sopaPollo = new Dish(root, "SopaPollo","Sopa De Pollo", sopa.getButton());
+        Dish sancocho = new Dish(root, "Sancocho","Sancocho", sopa.getButton(), ordenar);
+        Dish ajiaco = new Dish(root, "Ajiaco","Ajiaco", sopa.getButton(), ordenar);
+        Dish sopaPollo = new Dish(root, "SopaPollo","Sopa De Pollo", sopa.getButton(), ordenar);
         
-        Dish limonada = new Dish(root, "Limonada","Limonada", bebida.getButton());
-        Dish mango = new Dish(root, "Mango","Mango", bebida.getButton());
-        Dish mora = new Dish(root, "Mora","Mora", bebida.getButton());
-        Dish fresa = new Dish(root, "Fresa","Fresa", bebida.getButton());
-        Dish cafe = new Dish(root, "Cafe","Café", bebida.getButton());
+        Dish limonada = new Dish(root, "Limonada","Limonada", bebida.getButton(), ordenar);
+        Dish mango = new Dish(root, "Mango","Mango", bebida.getButton(), ordenar);
+        Dish mora = new Dish(root, "Mora","Mora", bebida.getButton(), ordenar);
+        Dish fresa = new Dish(root, "Fresa","Fresa", bebida.getButton(), ordenar);
+        Dish cafe = new Dish(root, "Cafe","Café", bebida.getButton(), ordenar);
         
         
         // eventos de seleccion de comida 
@@ -165,17 +168,20 @@ class  DishMenu
     }
 }
 
-class Dish
+class Dish: MonoBehaviour
 {
     private VisualElement comidaSeleccionada;
     string title;
     private Button campoACambiar;
+    private OrderManager ordenar;
 
-    public Dish(VisualElement root, string selectedName,string _title  , Button buttonCambiar)
+    public Dish(VisualElement root, string selectedName,string _title  , Button buttonCambiar, OrderManager manager)
     {
         comidaSeleccionada = root.Q<VisualElement>(selectedName);
         title = _title;
         campoACambiar = buttonCambiar;
+        ordenar = manager;
+        
     }
 
     public void updateTitle(ClickEvent evt)
@@ -183,7 +189,7 @@ class Dish
         campoACambiar.text = title;
         if ( campoACambiar.style.backgroundColor != Color.green){Objects.selectPlate += 1;}
         campoACambiar.style.backgroundColor = new StyleColor(Color.green);
-
+        ordenar.OrderItem(title);
     }
 
     public VisualElement buttonToSelect()
