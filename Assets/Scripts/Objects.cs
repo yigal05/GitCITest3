@@ -9,7 +9,7 @@ public class Objects : MonoBehaviour
     private VisualElement foodsScreen, starScreen, goBack;
     private VisualElement currentScreen;
     private Label pageTitle;
-    private Button comprar;
+    private Button confirmOrderButton;
     private OrderManager ordenar;
 
 
@@ -23,7 +23,7 @@ public class Objects : MonoBehaviour
         starScreen = root.Q<VisualElement>("Start");
         pageTitle = root.Q<Label>("pageTitle");
         goBack = root.Q<VisualElement>("GoBack");
-        comprar = root.Q<Button>("Comprar");
+        confirmOrderButton = root.Q<Button>("Comprar");
         
         DishMenu principio = new DishMenu(root , "Principio","Principio","ButtonPrin");
         DishMenu acompanante = new DishMenu(root , "Acompanante","Acompañante","ButtonAcom");
@@ -38,6 +38,8 @@ public class Objects : MonoBehaviour
         bebida.getButton().RegisterCallback<ClickEvent,DishMenu>(ChangePage , bebida);
         goBack.RegisterCallback<ClickEvent>(GoBack);
         
+        confirmOrderButton.RegisterCallback<ClickEvent>(ConfirmOrder);
+
         //platos 
 
         Dish lentejas = new Dish(root, "Lentejas","Lentejas", principio.getButton(), ordenar);
@@ -67,25 +69,25 @@ public class Objects : MonoBehaviour
         // eventos de seleccion de comida 
         
         //Principio
-        lentejas.buttonToSelect().RegisterCallback<ClickEvent>(lentejas.updateTitle);
-        frijoles.buttonToSelect().RegisterCallback<ClickEvent>(frijoles.updateTitle);
-        pasta.buttonToSelect().RegisterCallback<ClickEvent>(pasta.updateTitle);
+        lentejas.buttonToSelect().RegisterCallback<ClickEvent>(lentejas.UpdateTitle);
+        frijoles.buttonToSelect().RegisterCallback<ClickEvent>(frijoles.UpdateTitle);
+        pasta.buttonToSelect().RegisterCallback<ClickEvent>(pasta.UpdateTitle);
         lentejas.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         frijoles.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         pasta.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         
         //Acompañante
-        Arroz.buttonToSelect().RegisterCallback<ClickEvent>(Arroz.updateTitle);
-        Pure.buttonToSelect().RegisterCallback<ClickEvent>(Pure.updateTitle);
+        Arroz.buttonToSelect().RegisterCallback<ClickEvent>(Arroz.UpdateTitle);
+        Pure.buttonToSelect().RegisterCallback<ClickEvent>(Pure.UpdateTitle);
         Arroz.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         Pure.buttonToSelect().RegisterCallback<ClickEvent>(GoBack); 
         
         //Proteina 
-        pollo.buttonToSelect().RegisterCallback<ClickEvent>(pollo.updateTitle);
-        cerdo.buttonToSelect().RegisterCallback<ClickEvent>(cerdo.updateTitle);
-        pavo.buttonToSelect().RegisterCallback<ClickEvent>(pavo.updateTitle);
-        pescado.buttonToSelect().RegisterCallback<ClickEvent>(pescado.updateTitle);
-        huevo.buttonToSelect().RegisterCallback<ClickEvent>(huevo.updateTitle);
+        pollo.buttonToSelect().RegisterCallback<ClickEvent>(pollo.UpdateTitle);
+        cerdo.buttonToSelect().RegisterCallback<ClickEvent>(cerdo.UpdateTitle);
+        pavo.buttonToSelect().RegisterCallback<ClickEvent>(pavo.UpdateTitle);
+        pescado.buttonToSelect().RegisterCallback<ClickEvent>(pescado.UpdateTitle);
+        huevo.buttonToSelect().RegisterCallback<ClickEvent>(huevo.UpdateTitle);
         pollo.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         cerdo.buttonToSelect().RegisterCallback<ClickEvent>(GoBack); 
         pavo.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
@@ -93,19 +95,19 @@ public class Objects : MonoBehaviour
         huevo.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         
         //Sopas
-        sancocho.buttonToSelect().RegisterCallback<ClickEvent>(sancocho.updateTitle);
-        ajiaco.buttonToSelect().RegisterCallback<ClickEvent>(ajiaco.updateTitle);
-        sopaPollo.buttonToSelect().RegisterCallback<ClickEvent>(sopaPollo.updateTitle);
+        sancocho.buttonToSelect().RegisterCallback<ClickEvent>(sancocho.UpdateTitle);
+        ajiaco.buttonToSelect().RegisterCallback<ClickEvent>(ajiaco.UpdateTitle);
+        sopaPollo.buttonToSelect().RegisterCallback<ClickEvent>(sopaPollo.UpdateTitle);
         sancocho.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         ajiaco.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         sopaPollo.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         
         //Bebidas 
-        limonada.buttonToSelect().RegisterCallback<ClickEvent>(limonada.updateTitle);
-        mango.buttonToSelect().RegisterCallback<ClickEvent>(mango.updateTitle);
-        mora.buttonToSelect().RegisterCallback<ClickEvent>(mora.updateTitle);
-        fresa.buttonToSelect().RegisterCallback<ClickEvent>(fresa.updateTitle);
-        cafe.buttonToSelect().RegisterCallback<ClickEvent>(cafe.updateTitle);
+        limonada.buttonToSelect().RegisterCallback<ClickEvent>(limonada.UpdateTitle);
+        mango.buttonToSelect().RegisterCallback<ClickEvent>(mango.UpdateTitle);
+        mora.buttonToSelect().RegisterCallback<ClickEvent>(mora.UpdateTitle);
+        fresa.buttonToSelect().RegisterCallback<ClickEvent>(fresa.UpdateTitle);
+        cafe.buttonToSelect().RegisterCallback<ClickEvent>(cafe.UpdateTitle);
         limonada.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
         mango.buttonToSelect().RegisterCallback<ClickEvent>(GoBack); 
         mora.buttonToSelect().RegisterCallback<ClickEvent>(GoBack);
@@ -132,9 +134,14 @@ public class Objects : MonoBehaviour
         currentScreen.style.display = DisplayStyle.None;
         starScreen.style.display = DisplayStyle.Flex;
         foodsScreen.style.display = DisplayStyle.None;
-        if (selectPlate == 5) { comprar.style.display = DisplayStyle.Flex; };
+        if (selectPlate == 5) { confirmOrderButton.style.display = DisplayStyle.Flex; };
     }
-     
+
+    private void ConfirmOrder(ClickEvent evt)
+    {
+        ordenar.ConfirmOrder();
+    }
+
 }
 
 
@@ -174,8 +181,9 @@ class Dish: MonoBehaviour
     string title;
     private Button campoACambiar;
     private OrderManager ordenar;
+    private bool selected = false;
 
-    public Dish(VisualElement root, string selectedName,string _title  , Button buttonCambiar, OrderManager manager)
+    public Dish(VisualElement root, string selectedName, string _title  , Button buttonCambiar, OrderManager manager)
     {
         comidaSeleccionada = root.Q<VisualElement>(selectedName);
         title = _title;
@@ -184,12 +192,24 @@ class Dish: MonoBehaviour
         
     }
 
-    public void updateTitle(ClickEvent evt)
+    public void UpdateTitle(ClickEvent evt)
     {
-        campoACambiar.text = title;
-        if ( campoACambiar.style.backgroundColor != Color.green){Objects.selectPlate += 1;}
-        campoACambiar.style.backgroundColor = new StyleColor(Color.green);
-        ordenar.OrderItem(title);
+        if (!selected)
+        {
+            campoACambiar.text = title;
+            Objects.selectPlate += 1;
+            campoACambiar.style.backgroundColor = new StyleColor(Color.green);
+            ordenar.AddToOrder(title);
+        }
+        else
+        {
+            campoACambiar.text = "";
+            Objects.selectPlate -= 1;
+            campoACambiar.style.backgroundColor = new StyleColor(Color.white);
+            ordenar.RemoveFromOrder(title);
+        }
+
+        selected = !selected;
     }
 
     public VisualElement buttonToSelect()
