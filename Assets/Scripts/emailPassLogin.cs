@@ -344,7 +344,6 @@ public class emailPassLogin : MonoBehaviour
     #region Login
     public void Login(ClickEvent evt)
     {
-        //loadingScreen.SetActive(true);
 
         FirebaseAuth auth = FirebaseAuth.DefaultInstance;
         string email = this.email.value;
@@ -366,7 +365,6 @@ public class emailPassLogin : MonoBehaviour
                 lb_warning.text = "Verificar el correo o la contraseña";
                 return;
             }
-            //loadingScreen.SetActive(false);
             AuthResult result = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 result.User.DisplayName, result.User.UserId);
@@ -457,6 +455,7 @@ public class emailPassLogin : MonoBehaviour
         comida.enabled = true;
     }
 
+    
     #endregion
 
 }

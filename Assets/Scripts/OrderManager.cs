@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 public class OrderManager : MonoBehaviour
 {
-    // Referencia al MenuManager para acceder a los datos del menú
+    // Referencia al MenuManager para acceder a los datos del menï¿½
     public MenuManager menuManager;
 
     // Texto para mostrar el estado de la orden
@@ -15,13 +15,13 @@ public class OrderManager : MonoBehaviour
 
     private List<string> selectedItems = new List<string>();
 
-    // Método para manejar el pedido de un elemento
+    // Mï¿½todo para manejar el pedido de un elemento
     public void OrderItem(string itemName)
     {
         if (!selectedItems.Contains(itemName))
         {
             selectedItems.Add(itemName);
-            UpdateOrderStatus($"Plato añadido: {itemName}");
+            UpdateOrderStatus($"Plato aï¿½adido: {itemName}");
         }
         else
         {
@@ -73,7 +73,7 @@ public class OrderManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("El objeto de texto del estado del pedido no está asignado en el Inspector de Unity.");
+            Debug.LogError("El objeto de texto del estado del pedido no estï¿½ asignado en el Inspector de Unity.");
         }
     }
 }

@@ -188,7 +188,6 @@ class Dish : MonoBehaviour
         title = _title;
         campoACambiar = buttonCambiar;
         ordenar = manager;
-
     }
 
     public void UpdateTitle(ClickEvent evt)
