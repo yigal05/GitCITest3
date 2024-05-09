@@ -6,6 +6,7 @@ using Firebase;
 using UnityEngine.UIElements;
 using Google;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class emailPassLogin : MonoBehaviour
 {
@@ -343,7 +344,6 @@ public class emailPassLogin : MonoBehaviour
     #region Login
     public void Login(ClickEvent evt)
     {
-        //loadingScreen.SetActive(true);
 
         FirebaseAuth auth = FirebaseAuth.DefaultInstance;
         string email = this.email.value;
@@ -365,7 +365,6 @@ public class emailPassLogin : MonoBehaviour
                 lb_warning.text = "Verificar el correo o la contraseña";
                 return;
             }
-            //loadingScreen.SetActive(false);
             AuthResult result = task.Result;
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 result.User.DisplayName, result.User.UserId);
@@ -450,11 +449,13 @@ public class emailPassLogin : MonoBehaviour
 
     void EnterInApp()
     {
+        SceneManager.LoadScene("MenuLenti", LoadSceneMode.Single);
         interfaces.visualTreeAsset = foods;
         Objects comida = GetComponent<Objects>();
         comida.enabled = true;
     }
 
+    
     #endregion
 
 }

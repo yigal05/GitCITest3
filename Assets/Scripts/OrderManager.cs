@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using Firebase;
 using Firebase.Database;
@@ -14,47 +14,40 @@ public class OrderManager : MonoBehaviour
     // Texto para mostrar el estado de la orden
     public TMP_Text orderStatusText;
 
-    // Método para manejar el pedido de un elemento
+    private List<string> selectedItems = new List<string>();
+
     // Método para manejar el pedido de un elemento
     public void OrderItem(string itemName)
     {
-        // Llama a GetMenuOptions con una función de devolución de llamada
-        menuManager.GetMenuOptions((options) =>
+        if (!selectedItems.Contains(itemName))
         {
-            if (options != null)
+            selectedItems.Add(itemName);
+            UpdateOrderStatus($"Plato añadido: {itemName}");
+        }
+        else
+        {
+            selectedItems.Remove(itemName);
+            UpdateOrderStatus($"Plato eliminado: {itemName}");
+        }
+    }
+
+    public void ConfirmOrder()
+    {
+        foreach (string itemName in selectedItems)
+        {
+            menuManager.GetMenuOptions((options) =>
             {
-                // Busca el elemento en la lista de opciones
-                MenuManager.MealOption item = options.Find(option => option.name.Equals(itemName));
-
-                if (item != null)
+                MealOption item = options.Find(option => option.name.Equals(itemName));
+                if (item != null && item.quantity > 0)
                 {
-                    // Verifica si hay suficiente cantidad disponible
-                    if (item.quantity > 0)
-                    {
-                        // Decrementa la cantidad en 1
-                        int newQuantity = item.quantity - 1;
-
-                        // Actualiza la cantidad en la base de datos y en la lista local de opciones
-                        menuManager.UpdateMenuOptionQuantity(itemName, newQuantity);
-
-                        // Actualizar el texto del estado del pedido
-                        UpdateOrderStatus($"Pedido realizado: {itemName}");
-                    }
-                    else
-                    {
-                        orderStatusText.text = $"¡Lo siento, {itemName} no está disponible!";
-                    }
+                    int newQuantity = item.quantity - 1;
+                    menuManager.UpdateMenuOptionQuantity(itemName, newQuantity);
                 }
-                else
-                {
-                    orderStatusText.text = $"¡{itemName} no encontrado en el menú!";
-                }
-            }
-            else
-            {
-                Debug.LogError("Failed to load menu options.");
-            }
-        });
+            });
+        }
+
+        selectedItems.Clear();
+        UpdateOrderStatus("Pedido confirmado.");
     }
 
     private void UpdateOrderStatus(string status)
@@ -69,5 +62,19 @@ public class OrderManager : MonoBehaviour
         }
     }
 
+    public void AddToOrder(string itemName)
+    {
+        if (!selectedItems.Contains(itemName))
+        {
+            selectedItems.Add(itemName);
+        }
+    }
+
+    public void RemoveFromOrder(string itemName)
+    {
+        if (selectedItems.Contains(itemName))
+        {
+            selectedItems.Remove(itemName);
+        }
+    }
 }
-*/
