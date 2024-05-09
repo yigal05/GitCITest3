@@ -6,6 +6,7 @@ using Firebase;
 using UnityEngine.UIElements;
 using Google;
 using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class emailPassLogin : MonoBehaviour
 {
@@ -450,6 +451,7 @@ public class emailPassLogin : MonoBehaviour
 
     void EnterInApp()
     {
+        SceneManager.LoadScene("MenuLenti", LoadSceneMode.Single);
         interfaces.visualTreeAsset = foods;
         Objects comida = GetComponent<Objects>();
         comida.enabled = true;
