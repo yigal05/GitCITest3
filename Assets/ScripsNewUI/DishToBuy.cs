@@ -1,14 +1,25 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using System.Collections;
 
+public struct boton
+{
+    public VisualElement botonPlato;
+    public VisualElement bordenBoton;
+}
 namespace ScripsNewUI
 {
     public class DishToBuy : MonoBehaviour
     {
+
         //singleton
         public static DishToBuy Intance;
         // Botones que seran presionados para ir a ese menu
-        public VisualElement principio, acompanante, proteina, sopa, bebidas;
+        public boton principio;
+        public boton acompanante;
+        public boton proteina;
+        public boton sopa;
+        public boton bebidas;
         private VisualElement root;
         public VisualElement back;
         public DishChoosen plato;
@@ -25,6 +36,7 @@ namespace ScripsNewUI
 
         public VisualElement chosee;
         
+
         private void Awake()
         {
             if (Intance != null && Intance != this)
@@ -35,11 +47,7 @@ namespace ScripsNewUI
             {
                 Intance = this;
                 root = GetComponent<UIDocument>().rootVisualElement;
-                principio = root.Q<VisualElement>("Principio-n");
-                acompanante = root.Q<VisualElement>("Acompanante-n");
-                proteina = root.Q<VisualElement>("Proteina-n");
-                sopa = root.Q<VisualElement>("Sopas-n");
-                bebidas = root.Q<VisualElement>("Bebidas-n");
+
                 foodImage = root.Q<VisualElement>("imageFood-n");
                 titleFood = root.Q<Label>("titleFood-n");
                 descriptionFood = root.Q<Label>("foodDescription-n");
@@ -50,13 +58,30 @@ namespace ScripsNewUI
                 back = root.Q<VisualElement>("back");
                 chosee = root.Q<VisualElement>("Choose-n");
                 plato = new DishChoosen();
+                
+                principio.botonPlato = root.Q<VisualElement>("Principio-n");
+                principio.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                
+                acompanante.botonPlato = root.Q<VisualElement>("Acompanante-n");
+                acompanante.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                
+                proteina.botonPlato = root.Q<VisualElement>("Proteina-n");
+                proteina.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                
+                sopa.botonPlato = root.Q<VisualElement>("Sopas-n");
+                sopa.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                
+                bebidas.botonPlato = root.Q<VisualElement>("Bebidas-n");
+                bebidas.bordenBoton =root.Q<VisualElement>("iconElement-P");
+
             }
         }
 
         public void imprimirTin()
         {
-            print($" {plato.principio} {plato.acompanate} {plato.proteina}");
+            print($" {plato.principio} {plato.acompanate} {plato.proteina} {plato.sopa} {plato.bebidas}");
         }
+
     }
 }
 
@@ -66,5 +91,5 @@ public class DishChoosen
     public string acompanate;
     public string proteina;
     public string sopa;
-    public string bebida;
+    public string bebidas;
 }

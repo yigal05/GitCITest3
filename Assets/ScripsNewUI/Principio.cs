@@ -15,11 +15,11 @@ public class Principio : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Principios>();
-        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("frijoles"), "FRIJOLES", "SABEN GOTY"));
-        listaDeOpciones.Add( new Principios(Resources.Load<Sprite>("frijoles"), "LENTEJAS", "SABEN maso GOTY"));
-        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("frijoles"), "PASTAS", "TAMBIEN GOTY"));
-        
-        DishToBuy.Intance.principio.RegisterCallback<ClickEvent>(Showprincio);
+        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("frijoles2"), "Frijoles", "Deliciosos frijoles cocidos lentamente en una sabrosa mezcla de especias."));
+        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("lentejas"), "Lentejas", "Lentejas cocinadas a fuego lento en un caldo arom�tico con cebolla, ajo y zanahorias, sazonadas con hierbas frescas como el tomillo y el laurel"));
+        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("pasta"), "Pasta", "Pasta al dente con una salsa de tomate casera y hierbas frescas. Simple, sabroso y reconfortante."));
+
+        DishToBuy.Intance.principio.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }
 
     private void Update()
@@ -63,6 +63,7 @@ public class Principio : MonoBehaviour
     void ElegirThis(ClickEvent evt)
     {
         DishToBuy.Intance.plato.principio = listaDeOpciones[id].titulo;
+        DishToBuy.Intance.principio.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0,0,0,110));
         baack(new ClickEvent());
     }
     void baack(ClickEvent evt)

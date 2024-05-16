@@ -15,10 +15,12 @@ public class Proteina : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Proteinas>();
-        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("frijoles"), "POLLO", "SABEN GOTY"));
-        listaDeOpciones.Add( new Proteinas(Resources.Load<Sprite>("frijoles"), "PESCADO", "SABEN maso GOTY"));
-        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("frijoles"), "PAVO", "TAMBIEN GOTY"));
-        
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("pollo"), "Pollo", "Pollo jugoso y tierno, sazonado con hierbas y especias, asado a la perfección para un sabor delicioso y una experiencia de comida satisfactoria"));
+        listaDeOpciones.Add( new Proteinas(Resources.Load<Sprite>("cerdo"), "Cerdo", "Trozos de cerdo tierno y jugoso, cocinados lentamente en una salsa aromática que realza su sabor único y lo convierte en una opción deliciosa para cualquier comida."));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("pavo"), "Pavo", "Pavo asado con un dorado crujiente por fuera y jugoso por dentro, sazonado con hierbas aromáticas para un sabor delicioso y una opción ligera y saludable para cualquier ocasión."));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("pescado"), "Pescado", "Pescado fresco y delicado, cocinado a la perfección para resaltar su sabor natural y su textura tierna. Una opción ligera y nutritiva que deleitará a los amantes del marisco"));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("huevo"), "Huevo", "Huevo frito con una yema dorada y una clara crujiente en los bordes, una delicia simple y reconfortante que complementa cualquier desayuno o comida."));
+
         DishToBuy.Intance.proteina.RegisterCallback<ClickEvent>(Showprincio);
     }
 

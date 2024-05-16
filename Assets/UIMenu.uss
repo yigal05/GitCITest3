@@ -7,11 +7,17 @@
 }
 
 .imagesFood {
-    height: 80%;
-    background-color: rgba(0, 0, 0, 0);
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.14);
     flex-shrink: 0;
     align-items: center;
     justify-content: flex-start;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 106px;
+    margin-bottom: 8px;
 }
 
 .menuButtonsName {
@@ -55,4 +61,5 @@
 .iconElement {
     height: 80%;
     width: 80%;
+    margin-top: 8%;
 }

@@ -19,7 +19,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="foots" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
                 <ui:VisualElement name="Principio-n" class="menuButtonsLayout" style="flex-grow: 0;">
-                    <ui:VisualElement name="iconElement" class="imagesFood" style="flex-grow: 1;">
+                    <ui:VisualElement name="iconElement-P" class="imagesFood" style="flex-grow: 1;">
                         <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/utensilios-de-plato.png?fileID=2800000&amp;guid=a9a5d697f0f77c14d82501f61361d561&amp;type=3#utensilios-de-plato&quot;);" />
                     </ui:VisualElement>
                     <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
