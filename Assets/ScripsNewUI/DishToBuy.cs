@@ -31,10 +31,9 @@ namespace ScripsNewUI
         //screen que esta actualmente por defecto deberia ser main
         private VisualElement currentScreen;
 
-        public VisualElement mainScreen, foodScreen;
-        public VisualElement next;
-
-        public VisualElement chosee;
+        public VisualElement mainScreen, foodScreen, appScreen , welcomeScreen, topBanner;
+        public ScrollView  buyScreen;
+        public VisualElement next,chosee, chooseLunch;
         
 
         private void Awake()
@@ -54,33 +53,55 @@ namespace ScripsNewUI
                 
                 mainScreen = root.Q<VisualElement>("MainScreen");
                 foodScreen = root.Q<VisualElement>("FoodScreen");
+                appScreen = root.Q<VisualElement>("App");
+                welcomeScreen = root.Q<VisualElement>("Welcome");
+                topBanner = root.Q<VisualElement>("Header");
+                buyScreen = root.Q<ScrollView>("BuyScreen");
+                
                 next = root.Q<VisualElement>("next");
                 back = root.Q<VisualElement>("back");
                 chosee = root.Q<VisualElement>("Choose-n");
                 plato = new DishChoosen();
                 
                 principio.botonPlato = root.Q<VisualElement>("Principio-n");
-                principio.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                principio.bordenBoton =root.Q<VisualElement>("bordePrincipio");
                 
                 acompanante.botonPlato = root.Q<VisualElement>("Acompanante-n");
-                acompanante.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                acompanante.bordenBoton =root.Q<VisualElement>("bordeAcompanate");
                 
                 proteina.botonPlato = root.Q<VisualElement>("Proteina-n");
-                proteina.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                proteina.bordenBoton =root.Q<VisualElement>("bordeProteina");
                 
                 sopa.botonPlato = root.Q<VisualElement>("Sopas-n");
-                sopa.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                sopa.bordenBoton =root.Q<VisualElement>("bordeSopa");
                 
                 bebidas.botonPlato = root.Q<VisualElement>("Bebidas-n");
-                bebidas.bordenBoton =root.Q<VisualElement>("iconElement-P");
+                bebidas.bordenBoton =root.Q<VisualElement>("bordeBebidas");
+
+                chooseLunch = root.Q<VisualElement>("goApp_n");
+                chooseLunch.RegisterCallback<ClickEvent>(GoToMainMenu);
 
             }
         }
+        
 
-        public void imprimirTin()
+        public void GoToMainMenu(ClickEvent evt)
         {
-            print($" {plato.principio} {plato.acompanate} {plato.proteina} {plato.sopa} {plato.bebidas}");
+            welcomeScreen.style.display = DisplayStyle.None;
+            appScreen.style.display = DisplayStyle.Flex;
         }
+
+        public void goBuy()
+        {
+            if (plato.AreAllFieldsNotNull())
+            {
+                buyScreen.style.display = DisplayStyle.Flex;
+                mainScreen.style.display = DisplayStyle.None;
+                topBanner.style.display = DisplayStyle.None;
+            }
+        }
+        
+        
 
     }
 }
@@ -88,8 +109,15 @@ namespace ScripsNewUI
 public class DishChoosen
 {
     public string principio;
-    public string acompanate;
+    public string acompanante;
     public string proteina;
     public string sopa;
     public string bebidas;
+    
+    public bool AreAllFieldsNotNull()
+    {
+        return principio != null && acompanante != null && proteina != null && sopa != null && bebidas != null;
+    }
+    
+    
 }

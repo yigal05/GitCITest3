@@ -16,7 +16,6 @@ public class Acompanante : MonoBehaviour
         listaDeOpciones = new List<Acompantes>();
         listaDeOpciones.Add(new Acompantes(Resources.Load<Sprite>("arroz"), "Arroz", "Arroz blanco cocido perfectamente, ligero y esponjoso, listo para acompa�ar cualquier comida con su sencillez y versatilidad"));
         listaDeOpciones.Add( new Acompantes(Resources.Load<Sprite>("pure"), "Pure", "Pur� de papas cremoso y suave, preparado con mantequilla y leche, una deliciosa guarnici�n reconfortante que complementa cualquier plato principal"));
-        DishToBuy.Intance.chosee.RegisterCallback<ClickEvent>(ElegirThis);
         
         DishToBuy.Intance.acompanante.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }
@@ -31,13 +30,6 @@ public class Acompanante : MonoBehaviour
         id = 0;
         ChangeMainScreen(listaDeOpciones[id]);
     }
-    
-    void ElegirThis(ClickEvent evt)
-    {
-        DishToBuy.Intance.plato.acompanate = listaDeOpciones[id].titulo;
-        baack(new ClickEvent());
-    }
-    
     void goNextOption(ClickEvent evt)
     {
         id ++;
@@ -50,6 +42,15 @@ public class Acompanante : MonoBehaviour
         
         ChangeMainScreen(listaDeOpciones[id]);
     }
+    
+    void ElegirThis(ClickEvent evt)
+    {
+        DishToBuy.Intance.plato.acompanante = listaDeOpciones[id].titulo;
+        DishToBuy.Intance.acompanante.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0,0,0,110));
+        baack(new ClickEvent());
+        DishToBuy.Intance.goBuy();
+    }
+    
     void ChangeMainScreen( Acompantes choosenOption)
     {
         DishToBuy.Intance.foodImage.style.backgroundImage = new StyleBackground(choosenOption.imagen);
@@ -65,6 +66,7 @@ public class Acompanante : MonoBehaviour
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
+        
     }
 }
 

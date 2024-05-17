@@ -20,7 +20,7 @@ public class Sopa : MonoBehaviour
         listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("sancocho"), "Sancocho", "Sancocho, un guiso tradicional latinoamericano, preparado con una variedad de carnes, plátanos, yuca, ñame, maíz y otras verduras, cocidas lentamente en un caldo aromático sazonado con hierbas y especias. Un plato reconfortante y abundante que es una verdadera fiesta para el paladar"));
         listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("sopapollo"), "Sopa de Pollo", "Sopa de pollo, un plato reconfortante hecho con trozos tiernos de pollo, verduras frescas como zanahorias, apio y cebolla, cocidas en un caldo sabroso y sazonado con hierbas aromáticas. Una opción nutritiva y satisfactoria para cualquier ocasión."));
 
-        DishToBuy.Intance.sopa.RegisterCallback<ClickEvent>(Showprincio);
+        DishToBuy.Intance.sopa.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }
 
     void Showprincio(ClickEvent evt)
@@ -38,7 +38,9 @@ public class Sopa : MonoBehaviour
     void ElegirThis(ClickEvent evt)
     {
         DishToBuy.Intance.plato.sopa = listaDeOpciones[id].titulo;
+        DishToBuy.Intance.sopa.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0,0,0,110));
         baack(new ClickEvent());
+        DishToBuy.Intance.goBuy();
     }
 
     void goNextOption(ClickEvent evt)

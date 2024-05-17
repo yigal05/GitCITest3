@@ -21,15 +21,7 @@ public class Principio : MonoBehaviour
 
         DishToBuy.Intance.principio.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            DishToBuy.Intance.imprimirTin();
-        }
-    }
-
+    
     void Showprincio(ClickEvent evt)
     {
         DishToBuy.Intance.mainScreen.style.display = DisplayStyle.None;
@@ -65,6 +57,7 @@ public class Principio : MonoBehaviour
         DishToBuy.Intance.plato.principio = listaDeOpciones[id].titulo;
         DishToBuy.Intance.principio.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0,0,0,110));
         baack(new ClickEvent());
+        DishToBuy.Intance.goBuy();
     }
     void baack(ClickEvent evt)
     {

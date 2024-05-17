@@ -16,13 +16,13 @@ public class Bebidas : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Bebida>();
-        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("limonada"), "Limonada", "Limonada, una refrescante bebida preparada con jugo de limón recién exprimido, endulzada con aguapanela y mezclada con agua fría. Una opción deliciosa y revitalizante para calmar la sed en días calurosos"));
-        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("mora"), "Mora", "Jugo de mora, una bebida refrescante hecha con jugo natural de mora, endulzado con azúcar y servido sobre hielo. Una delicia frutal con un toque dulce y ácido que deleita el paladar."));
-        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("frijoles"), "Fresa", "Jugo de fresa, una bebida deliciosa y vibrante hecha con jugo fresco de fresas maduras, endulzado con un toque de azúcar y servido con hielo. Refrescante y lleno de sabor, es una opción perfecta para satisfacer los antojos de frutas."));
-        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("cafe"), "Cafe", "Café, una bebida caliente y reconfortante preparada con granos de café tostado y molido, infusionados con agua caliente. Con su aroma tentador y su sabor robusto, el café es el compañero perfecto para empezar el día o disfrutar de un momento de tranquilidad."));
-        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("mango"), "Mango", "Jugo de mango, una bebida tropical y exótica elaborada con jugo fresco de mango, mezclado con hielo para crear una bebida refrescante y llena de sabor. Ideal para disfrutar en días soleados."));
+        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("limonada"), "Limonada", "Limonada, una refrescante bebida preparada con jugo de limï¿½n reciï¿½n exprimido, endulzada con aguapanela y mezclada con agua frï¿½a. Una opciï¿½n deliciosa y revitalizante para calmar la sed en dï¿½as calurosos"));
+        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("mora"), "Mora", "Jugo de mora, una bebida refrescante hecha con jugo natural de mora, endulzado con azï¿½car y servido sobre hielo. Una delicia frutal con un toque dulce y ï¿½cido que deleita el paladar."));
+        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("frijoles"), "Fresa", "Jugo de fresa, una bebida deliciosa y vibrante hecha con jugo fresco de fresas maduras, endulzado con un toque de azï¿½car y servido con hielo. Refrescante y lleno de sabor, es una opciï¿½n perfecta para satisfacer los antojos de frutas."));
+        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("cafe"), "Cafe", "Cafï¿½, una bebida caliente y reconfortante preparada con granos de cafï¿½ tostado y molido, infusionados con agua caliente. Con su aroma tentador y su sabor robusto, el cafï¿½ es el compaï¿½ero perfecto para empezar el dï¿½a o disfrutar de un momento de tranquilidad."));
+        listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("mango"), "Mango", "Jugo de mango, una bebida tropical y exï¿½tica elaborada con jugo fresco de mango, mezclado con hielo para crear una bebida refrescante y llena de sabor. Ideal para disfrutar en dï¿½as soleados."));
 
-        DishToBuy.Intance.bebidas.RegisterCallback<ClickEvent>(Showprincio);
+        DishToBuy.Intance.bebidas.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }
 
     void Showprincio(ClickEvent evt)
@@ -42,7 +42,9 @@ public class Bebidas : MonoBehaviour
     void ElegirThis(ClickEvent evt)
     {
         DishToBuy.Intance.plato.bebidas = listaDeOpciones[id].titulo;
+        DishToBuy.Intance.bebidas.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0,0,0,110));
         baack(new ClickEvent());
+        DishToBuy.Intance.goBuy();
     }
 
     void goNextOption(ClickEvent evt)
