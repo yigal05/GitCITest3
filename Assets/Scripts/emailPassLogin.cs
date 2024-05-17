@@ -42,12 +42,7 @@ public class emailPassLogin : MonoBehaviour
     private Label lb_goLogin;
     private Label lb_warningSignUp;
     private Button bt_googleLoginButton;
-
-    public VisualTreeAsset foods;
-    public UIDocument interfaces;
-
-
-
+    
     private void Awake()
     {
 
@@ -449,10 +444,7 @@ public class emailPassLogin : MonoBehaviour
 
     void EnterInApp()
     {
-        SceneManager.LoadScene("MenuLenti", LoadSceneMode.Single);
-        interfaces.visualTreeAsset = foods;
-        Objects comida = GetComponent<Objects>();
-        comida.enabled = true;
+        SceneManager.LoadScene("Scenes/NewUI", LoadSceneMode.Single);
     }
 
     
