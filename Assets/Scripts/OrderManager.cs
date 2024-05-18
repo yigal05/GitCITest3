@@ -21,12 +21,10 @@ public class OrderManager : MonoBehaviour
         if (!selectedItems.Contains(itemName))
         {
             selectedItems.Add(itemName);
-            UpdateOrderStatus($"Plato a�adido: {itemName}");
         }
         else
         {
             selectedItems.Remove(itemName);
-            UpdateOrderStatus($"Plato eliminado: {itemName}");
         }
     }
 
@@ -62,18 +60,7 @@ public class OrderManager : MonoBehaviour
         }
 
         selectedItems.Clear();
-        UpdateOrderStatus("Pedido confirmado.");
     }
 
-    private void UpdateOrderStatus(string status)
-    {
-        if (orderStatusText != null)
-        {
-            orderStatusText.text = status;
-        }
-        else
-        {
-            Debug.LogError("El objeto de texto del estado del pedido no est� asignado en el Inspector de Unity.");
-        }
-    }
+
 }

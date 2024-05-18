@@ -70,6 +70,7 @@ public class Proteina : MonoBehaviour
         DishToBuy.Intance.foodScreen.style.display = DisplayStyle.None;
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
+        DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
     }
 }
 

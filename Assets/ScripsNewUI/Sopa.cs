@@ -52,7 +52,7 @@ public class Sopa : MonoBehaviour
         // if (id == -1)
         // id = listaDeOpciones.Count
 
-
+        print($"la opcion elegida actualmente es {listaDeOpciones[id].titulo}");
         ChangeMainScreen(listaDeOpciones[id]);
     }
     void ChangeMainScreen(Sopas choosenOption)
@@ -69,6 +69,7 @@ public class Sopa : MonoBehaviour
         DishToBuy.Intance.foodScreen.style.display = DisplayStyle.None;
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
+        DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
     }
 }
 

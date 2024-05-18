@@ -66,6 +66,7 @@ public class Acompanante : MonoBehaviour
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
+        DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
         
     }
 }
