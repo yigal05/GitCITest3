@@ -15,9 +15,9 @@ public class Principio : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Principios>();
-        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("frijoles2"), "Frijoles", "Deliciosos frijoles cocidos lentamente en una sabrosa mezcla de especias."));
-        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("lentejas"), "Lentejas", "Lentejas cocinadas a fuego lento en un caldo arom�tico con cebolla, ajo y zanahorias, sazonadas con hierbas frescas como el tomillo y el laurel"));
-        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("pasta"), "Pasta", "Pasta al dente con una salsa de tomate casera y hierbas frescas. Simple, sabroso y reconfortante."));
+        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("Frijoles"), "Frijoles", "Deliciosos frijoles cocidos lentamente en una sabrosa mezcla de especias."));
+        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("Lentejas"), "Lentejas", "Lentejas cocinadas a fuego lento en un caldo arom�tico con cebolla, ajo y zanahorias, sazonadas con hierbas frescas como el tomillo y el laurel"));
+        listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("Pasta"), "Pasta", "Pasta al dente con una salsa de tomate casera y hierbas frescas. Simple, sabroso y reconfortante."));
 
         DishToBuy.Intance.principio.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }

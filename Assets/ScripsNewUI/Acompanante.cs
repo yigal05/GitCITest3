@@ -14,8 +14,8 @@ public class Acompanante : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Acompantes>();
-        listaDeOpciones.Add(new Acompantes(Resources.Load<Sprite>("arroz"), "Arroz", "Arroz blanco cocido perfectamente, ligero y esponjoso, listo para acompa�ar cualquier comida con su sencillez y versatilidad"));
-        listaDeOpciones.Add( new Acompantes(Resources.Load<Sprite>("pure"), "Pure", "Pur� de papas cremoso y suave, preparado con mantequilla y leche, una deliciosa guarnici�n reconfortante que complementa cualquier plato principal"));
+        listaDeOpciones.Add(new Acompantes(Resources.Load<Sprite>("Arroz"), "Arroz", "Arroz blanco cocido perfectamente, ligero y esponjoso, listo para acompa�ar cualquier comida con su sencillez y versatilidad"));
+        listaDeOpciones.Add( new Acompantes(Resources.Load<Sprite>("Pure"), "Pure", "Pur� de papas cremoso y suave, preparado con mantequilla y leche, una deliciosa guarnici�n reconfortante que complementa cualquier plato principal"));
         
         DishToBuy.Intance.acompanante.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }

@@ -16,9 +16,9 @@ public class Sopa : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Sopas>();
-        listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("ajiaco"), "Ajiaco", "Ajiaco, una sabrosa sopa colombiana, hecha con pollo, papas, maíz, yuca y guascas, sazonada con cilantro y servida con alcaparras y crema. Una delicia reconfortante y llena de sabor que representa la riqueza culinaria de Colombia."));
-        listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("sancocho"), "Sancocho", "Sancocho, un guiso tradicional latinoamericano, preparado con una variedad de carnes, plátanos, yuca, ñame, maíz y otras verduras, cocidas lentamente en un caldo aromático sazonado con hierbas y especias. Un plato reconfortante y abundante que es una verdadera fiesta para el paladar"));
-        listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("sopapollo"), "Sopa de Pollo", "Sopa de pollo, un plato reconfortante hecho con trozos tiernos de pollo, verduras frescas como zanahorias, apio y cebolla, cocidas en un caldo sabroso y sazonado con hierbas aromáticas. Una opción nutritiva y satisfactoria para cualquier ocasión."));
+        listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("Ajiaco"), "Ajiaco", "Ajiaco, una sabrosa sopa colombiana, hecha con pollo, papas, maíz, yuca y guascas, sazonada con cilantro y servida con alcaparras y crema. Una delicia reconfortante y llena de sabor que representa la riqueza culinaria de Colombia."));
+        listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("Sancocho"), "Sancocho", "Sancocho, un guiso tradicional latinoamericano, preparado con una variedad de carnes, plátanos, yuca, ñame, maíz y otras verduras, cocidas lentamente en un caldo aromático sazonado con hierbas y especias. Un plato reconfortante y abundante que es una verdadera fiesta para el paladar"));
+        listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("Sopa de Pollo"), "Sopa de Pollo", "Sopa de pollo, un plato reconfortante hecho con trozos tiernos de pollo, verduras frescas como zanahorias, apio y cebolla, cocidas en un caldo sabroso y sazonado con hierbas aromáticas. Una opción nutritiva y satisfactoria para cualquier ocasión."));
 
         DishToBuy.Intance.sopa.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }

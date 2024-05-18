@@ -15,11 +15,11 @@ public class Proteina : MonoBehaviour
     private void Start()
     {
         listaDeOpciones = new List<Proteinas>();
-        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("pollo"), "Pollo", "Pollo jugoso y tierno, sazonado con hierbas y especias, asado a la perfecci�n para un sabor delicioso y una experiencia de comida satisfactoria"));
-        listaDeOpciones.Add( new Proteinas(Resources.Load<Sprite>("cerdo"), "Cerdo", "Trozos de cerdo tierno y jugoso, cocinados lentamente en una salsa arom�tica que realza su sabor �nico y lo convierte en una opci�n deliciosa para cualquier comida."));
-        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("pavo"), "Pavo", "Pavo asado con un dorado crujiente por fuera y jugoso por dentro, sazonado con hierbas arom�ticas para un sabor delicioso y una opci�n ligera y saludable para cualquier ocasi�n."));
-        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("pescado"), "Pescado", "Pescado fresco y delicado, cocinado a la perfecci�n para resaltar su sabor natural y su textura tierna. Una opci�n ligera y nutritiva que deleitar� a los amantes del marisco"));
-        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("huevo"), "Huevo", "Huevo frito con una yema dorada y una clara crujiente en los bordes, una delicia simple y reconfortante que complementa cualquier desayuno o comida."));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("Pollo"), "Pollo", "Pollo jugoso y tierno, sazonado con hierbas y especias, asado a la perfecci�n para un sabor delicioso y una experiencia de comida satisfactoria"));
+        listaDeOpciones.Add( new Proteinas(Resources.Load<Sprite>("Cerdo"), "Cerdo", "Trozos de cerdo tierno y jugoso, cocinados lentamente en una salsa arom�tica que realza su sabor �nico y lo convierte en una opci�n deliciosa para cualquier comida."));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("Pavo"), "Pavo", "Pavo asado con un dorado crujiente por fuera y jugoso por dentro, sazonado con hierbas arom�ticas para un sabor delicioso y una opci�n ligera y saludable para cualquier ocasi�n."));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("Pescado"), "Pescado", "Pescado fresco y delicado, cocinado a la perfecci�n para resaltar su sabor natural y su textura tierna. Una opci�n ligera y nutritiva que deleitar� a los amantes del marisco"));
+        listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("Huevo"), "Huevo", "Huevo frito con una yema dorada y una clara crujiente en los bordes, una delicia simple y reconfortante que complementa cualquier desayuno o comida."));
 
         DishToBuy.Intance.proteina.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
     }
