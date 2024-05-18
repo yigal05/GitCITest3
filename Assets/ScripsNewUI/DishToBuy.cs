@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections;
+using Firebase.Database;
 
 public struct boton
 {
@@ -34,7 +36,18 @@ namespace ScripsNewUI
         public VisualElement mainScreen, foodScreen, appScreen , welcomeScreen, topBanner;
         public ScrollView  buyScreen;
         public VisualElement next,chosee, chooseLunch;
-        
+
+        public OrderManager ordenar;
+        public Label comprar;
+        private DatabaseReference databaseReference;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                print($"se ha elegido {plato.principio} , {plato.acompanante} , {plato.proteina} , {plato.sopa}, {plato.bebidas}");
+            }
+        }
 
         private void Awake()
         {
@@ -80,6 +93,11 @@ namespace ScripsNewUI
 
                 chooseLunch = root.Q<VisualElement>("goApp_n");
                 chooseLunch.RegisterCallback<ClickEvent>(GoToMainMenu);
+                
+                comprar = root.Q<Label>("comprar");
+                comprar.RegisterCallback<ClickEvent>(BuyDish);
+
+                databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
 
             }
         }
@@ -98,8 +116,25 @@ namespace ScripsNewUI
                 buyScreen.style.display = DisplayStyle.Flex;
                 mainScreen.style.display = DisplayStyle.None;
                 topBanner.style.display = DisplayStyle.None;
+                Label description = root.Q<Label>("DishDescription");
+                description.text =
+                    $"{plato.principio} , {plato.acompanante} , {plato.proteina} , {plato.sopa}, {plato.bebidas}";
+                
+                
             }
         }
+
+        void BuyDish(ClickEvent evr)
+        {
+            ordenar.AddToOrder(plato.principio);
+            ordenar.AddToOrder(plato.acompanante);
+            ordenar.AddToOrder(plato.proteina);
+            ordenar.AddToOrder(plato.sopa);
+            ordenar.AddToOrder(plato.bebidas);
+            ordenar.ConfirmOrder();
+        }
+        
+        
         
         
 

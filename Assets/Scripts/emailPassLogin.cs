@@ -45,7 +45,7 @@ public class emailPassLogin : MonoBehaviour
     
     private void Awake()
     {
-
+        
         configuration = new GoogleSignInConfiguration
         {
             WebClientId = GoogleWebAPI,
@@ -84,7 +84,6 @@ public class emailPassLogin : MonoBehaviour
 
         bt_googleLoginButton = root.Q<Button>("googleLoginButton");
         bt_googleLoginButton.RegisterCallback<ClickEvent>(GoogleSignInClick);
-
 
     }
 
