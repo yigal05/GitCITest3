@@ -27,7 +27,7 @@ namespace ScripsNewUI
         public DishChoosen plato;
         
         // Los campos que se modificaran en cada menu
-        public VisualElement foodImage;
+        public VisualElement foodImage, foodImageBuy;
         public Label titleFood, descriptionFood;
         
         //screen que esta actualmente por defecto deberia ser main
@@ -61,6 +61,7 @@ namespace ScripsNewUI
                 root = GetComponent<UIDocument>().rootVisualElement;
 
                 foodImage = root.Q<VisualElement>("imageFood-n");
+                foodImageBuy = root.Q<VisualElement>("FoodImageBuy");
                 titleFood = root.Q<Label>("titleFood-n");
                 descriptionFood = root.Q<Label>("foodDescription-n");
                 
@@ -119,8 +120,29 @@ namespace ScripsNewUI
                 Label description = root.Q<Label>("DishDescription");
                 description.text =
                     $"{plato.principio} , {plato.acompanante} , {plato.proteina} , {plato.sopa}, {plato.bebidas}";
-                
-                
+                ChangeVisualElementImage($"{plato.principio}");
+
+
+            }
+        }
+
+        void ChangeVisualElementImage(string spritePath)
+        {
+            // Carga el Sprite desde la carpeta Resources
+            Sprite sprite = Resources.Load<Sprite>(spritePath);
+
+            // Verifica si el Sprite se ha cargado correctamente
+            if (sprite != null)
+            {
+                // Crea una nueva imagen de fondo con el Sprite
+                var backgroundImage = new StyleBackground(sprite);
+
+                // Asigna la nueva imagen de fondo al VisualElement
+                foodImageBuy.style.backgroundImage = backgroundImage;
+            }
+            else
+            {
+                Debug.LogError("Sprite not found at path: " + spritePath);
             }
         }
 
