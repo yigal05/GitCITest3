@@ -1,0 +1,132 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/SecondUIMenu.uss?fileID=7433441132597879392&amp;guid=6adbd9607edb9d84983168ba0944a98b&amp;type=3#SecondUIMenu" />
+    <ui:VisualElement name="App" style="flex-grow: 1; display: flex;">
+        <ui:VisualElement name="Header" style="flex-grow: 0; flex-direction: row; height: 8%; display: flex;">
+            <ui:VisualElement name="back" style="flex-grow: 0; width: 10%; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-3753015318093942961&amp;guid=8ed13ea8d9005d24b88e95b579a0c7b3&amp;type=3#arrow-left&quot;); background-color: rgb(0, 0, 0);" />
+            <ui:Label tabindex="-1" text="Tienes algo en mente?" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 22px; -unity-text-align: middle-left; -unity-font-style: bold; width: 70%;" />
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; justify-content: center; align-items: center;">
+                <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/icons/usuario.png?fileID=2800000&amp;guid=7571bb09db4ea874796daf6ac3d08716&amp;type=3#usuario&quot;); width: 70%; height: 70%; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; background-color: rgb(101, 190, 112);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="MainScreen" style="flex-grow: 1; display: none;">
+            <ui:VisualElement name="head" style="flex-grow: 0; height: 6%; margin-left: 3%;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 0; align-items: center; height: 100%;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 0; background-color: rgba(22, 22, 22, 0.73); width: 90%; height: 90%; border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="footsContainer" style="flex-grow: 0; height: 45%; margin-left: 3%;">
+                <ui:VisualElement name="title" style="flex-grow: 0; height: 15%;">
+                    <ui:Label tabindex="-1" text="Menú" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 10px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="foots" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;">
+                    <ui:VisualElement name="Principio-n" class="menuButtonsLayout" style="flex-grow: 0;">
+                        <ui:VisualElement name="bordePrincipio" class="imagesFood" style="flex-grow: 1;">
+                            <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/utensilios-de-plato.png?fileID=2800000&amp;guid=a9a5d697f0f77c14d82501f61361d561&amp;type=3#utensilios-de-plato&quot;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
+                            <ui:Label tabindex="-1" text="Principio" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Acompanante-n" class="menuButtonsLayout" style="flex-grow: 0;">
+                        <ui:VisualElement name="bordeAcompanate" class="imagesFood" style="flex-grow: 1;">
+                            <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/tazon-de-arroz.png?fileID=2800000&amp;guid=98055c38cb3ee074abf783e17f18858e&amp;type=3#tazon-de-arroz&quot;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
+                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Proteina-n" class="menuButtonsLayout" style="flex-grow: 0;">
+                        <ui:VisualElement name="bordeProteina" class="imagesFood" style="flex-grow: 1;">
+                            <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/carne.png?fileID=2800000&amp;guid=c897c7d9751b56647855a7a88a273df4&amp;type=3#carne&quot;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
+                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Sopas-n" class="menuButtonsLayout" style="flex-grow: 0;">
+                        <ui:VisualElement name="bordeSopa" class="imagesFood" style="flex-grow: 1;">
+                            <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/sopa.png?fileID=2800000&amp;guid=ba217df77ee5818478652f981ee29094&amp;type=3#sopa&quot;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
+                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="Bebidas-n" class="menuButtonsLayout" style="flex-grow: 0;">
+                        <ui:VisualElement name="bordeBebidas" class="imagesFood" style="flex-grow: 1;">
+                            <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/swoosh-de-paja-de-copa.png?fileID=2800000&amp;guid=44a70ddbbf9b99a4aa810f10725bd5d4&amp;type=3#swoosh-de-paja-de-copa&quot;);" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
+                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="promociones" style="flex-grow: 1; margin-left: 3%;">
+                <ui:VisualElement name="titleProm" style="flex-grow: 0; height: 20%; align-items: flex-start;">
+                    <ui:Label tabindex="-1" text="Promociones" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 24px; -unity-font-style: bold;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="promContainer" style="flex-grow: 1; align-items: center;">
+                    <ui:VisualElement class="promDising" />
+                    <ui:VisualElement class="promDising" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="PlateScreen" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="Para empezar elige una de las siguientes opciones:" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold; flex-wrap: wrap; white-space: normal;" />
+            <ui:VisualElement style="flex-grow: 0; height: 30%; flex-direction: row; background-color: rgb(255, 255, 255); border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border-left-color: rgb(67, 67, 67); border-right-color: rgb(67, 67, 67); border-top-color: rgb(67, 67, 67); border-bottom-color: rgb(67, 67, 67); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 40%; flex-shrink: 0; background-image: url(&quot;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&quot;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; border-left-color: rgb(108, 108, 108); border-right-color: rgb(108, 108, 108); border-top-color: rgb(108, 108, 108); border-bottom-color: rgb(108, 108, 108); border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px;" />
+                <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%; flex-shrink: 1;">
+                    <ui:Label tabindex="-1" text="Frijoles" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold;" />
+                    <ui:Label tabindex="-1" text="Descripción detallada de los frijoles, b+asicamente mucho texto aaaaaaaaaaaaaa" parse-escape-sequences="true" display-tooltip-when-elided="true" style="flex-grow: 0; flex-wrap: wrap; width: 100%; white-space: normal; height: 55%; flex-shrink: 1;" />
+                    <ui:VisualElement style="flex-grow: 0; flex-direction: row; align-self: center; align-items: flex-end; flex-shrink: 1; width: 100%; justify-content: space-between; height: 20%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 3px; padding-right: 3px; padding-bottom: 3px; padding-left: 3px;">
+                        <ui:Button text="Ver más" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 20%; background-color: rgba(188, 188, 188, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" />
+                        <ui:Button text="Añadir" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 20%; background-color: rgb(184, 238, 176); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="FoodScreen" style="flex-grow: 1; display: none; padding-left: 3%; padding-right: 3%;">
+            <ui:VisualElement name="imageFood-n" style="flex-grow: 0; height: 50%; background-image: url(&quot;project://database/Assets/Images/5699e0a0a8e55e4d14a9785259a34fb3.png?fileID=2800000&amp;guid=c9ae4fe6b21519d4c96a8d395f10ce8e&amp;type=3#5699e0a0a8e55e4d14a9785259a34fb3&quot;); border-top-left-radius: 49px; border-top-right-radius: 49px; border-bottom-right-radius: 49px; border-bottom-left-radius: 49px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-top-width: 8px; border-right-width: 8px; border-bottom-width: 8px; border-left-width: 8px;" />
+            <ui:VisualElement name="Description" style="flex-grow: 0; height: 40%;">
+                <ui:Label tabindex="-1" text="nameFood" parse-escape-sequences="true" display-tooltip-when-elided="true" name="titleFood-n" style="font-size: 35px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Detalles" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 25px;" />
+                <ui:Label tabindex="-1" text="Un frijol, habichuela, judía o poroto es la semilla de uno de los varios géneros de las plantas con flor de la familia Fabaceae." parse-escape-sequences="true" display-tooltip-when-elided="true" name="foodDescription-n" style="font-size: 20px; white-space: normal;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ChooseThis" style="flex-grow: 0; height: 20%; align-items: center; justify-content: center; display: flex;">
+                <ui:VisualElement name="Choose-n" style="flex-grow: 0; width: 40%; height: 40%; justify-content: center; align-items: center; background-color: rgb(134, 180, 136); border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;">
+                    <ui:Label tabindex="-1" text="Elegir" parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 26px; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="next" style="flex-grow: 1; position: absolute; left: 92%; top: 30%; width: 4%; height: 9%; background-color: rgba(0, 122, 13, 0.95); display: flex;" />
+        </ui:VisualElement>
+        <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" vertical-scroller-visibility="Hidden" horizontal-scroller-visibility="Hidden" name="BuyScreen" style="display: none; flex-grow: 1; margin-left: 5%;">
+            <ui:VisualElement name="InfLunch" style="flex-grow: 0; align-items: center; justify-content: center; height: 100%; width: 100%; flex-shrink: 0;">
+                <ui:Label tabindex="-1" text="Detalles" parse-escape-sequences="false" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 24px;" />
+                <ui:VisualElement name="FoodImageBuy" style="flex-grow: 1; height: 179px; width: 95%; background-image: resource(&apos;cafe&apos;); border-top-left-radius: 38px; border-top-right-radius: 38px; border-bottom-right-radius: 38px; border-bottom-left-radius: 38px;" />
+                <ui:Label tabindex="-1" text="$ Precio" parse-escape-sequences="false" display-tooltip-when-elided="true" style="-unity-font-style: bold; font-size: 18px; align-items: center; -unity-text-align: upper-right; width: 95%;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" style="flex-grow: 0; height: 41%; width: 100%; flex-shrink: 0; display: flex;">
+                <ui:Label tabindex="-1" text="Nombre del plato" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 22px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Description, ingredientes, cantidad." parse-escape-sequences="true" display-tooltip-when-elided="true" name="DishDescription" style="font-size: 17px; color: rgb(0, 0, 0); white-space: normal;" />
+                <ui:VisualElement name="VisualElement" style="flex-grow: 0; flex-direction: row; justify-content: flex-start; align-self: auto; height: 100%; width: 100%;">
+                    <ui:Label tabindex="-1" text="Editar" parse-escape-sequences="true" display-tooltip-when-elided="true" name="editarButton" style="width: 28%; height: 46px; border-left-color: rgb(0, 255, 3); border-right-color: rgb(0, 255, 3); border-top-color: rgb(0, 255, 3); border-bottom-color: rgb(0, 255, 3); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-top-left-radius: 18px; border-top-right-radius: 18px; border-bottom-right-radius: 18px; border-bottom-left-radius: 18px; -unity-text-align: middle-center; font-size: 25px; -unity-font-style: normal;" />
+                    <ui:Label tabindex="-1" text="Ir a pagar" parse-escape-sequences="true" display-tooltip-when-elided="true" name="comprar" style="width: 57%; height: 46px; background-color: rgb(102, 255, 104); border-top-left-radius: 19px; border-top-right-radius: 19px; border-bottom-right-radius: 19px; border-bottom-left-radius: 19px; -unity-text-align: middle-center; font-size: 27px; -unity-font-style: bold; margin-left: 10px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:ScrollView>
+        <ui:VisualElement name="optionsBar" style="flex-grow: 0; height: 8%; flex-direction: row;">
+            <ui:VisualElement name="VisualElement" class="buttonOptionBar" style="flex-grow: 0;">
+                <ui:VisualElement name="iconoOpBar" class="iconOptionsBar" style="background-image: url(&quot;project://database/Assets/icons/hogar%20(1).png?fileID=2800000&amp;guid=897d5bb6d1695b44caea21bf1e0f4f30&amp;type=3#hogar (1)&quot;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" class="buttonOptionBar" style="flex-grow: 0;">
+                <ui:VisualElement name="iconoOpBar" class="iconOptionsBar" style="background-image: url(&quot;project://database/Assets/icons/busqueda.png?fileID=2800000&amp;guid=9009e2650cc691c4f88ca81e46d5204d&amp;type=3#busqueda&quot;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" class="buttonOptionBar" style="flex-grow: 0;">
+                <ui:VisualElement name="iconoOpBar" class="iconOptionsBar" style="background-image: url(&quot;project://database/Assets/icons/carrito-de-compras.png?fileID=2800000&amp;guid=679a5e3d47122b84ab5bad5660b83f6c&amp;type=3#carrito-de-compras&quot;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="VisualElement" class="buttonOptionBar" style="flex-grow: 0;">
+                <ui:VisualElement name="iconoOpBar" class="iconOptionsBar" style="background-image: url(&quot;project://database/Assets/icons/usuario.png?fileID=2800000&amp;guid=7571bb09db4ea874796daf6ac3d08716&amp;type=3#usuario&quot;); -unity-background-image-tint-color: rgb(0, 0, 0);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
