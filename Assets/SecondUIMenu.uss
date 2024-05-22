@@ -63,3 +63,25 @@
     width: 80%;
     margin-top: 8%;
 }
+
+.footElementInList {
+    flex-grow: 0;
+    height: 100%;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-left-color: rgb(67, 67, 67);
+    border-right-color: rgb(67, 67, 67);
+    border-top-color: rgb(67, 67, 67);
+    border-bottom-color: rgb(67, 67, 67);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 14px;
+}

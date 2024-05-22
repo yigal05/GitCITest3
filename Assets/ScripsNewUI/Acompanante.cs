@@ -8,22 +8,41 @@ public class Acompanante : MonoBehaviour
 {
     private int id =0;
     public List<Acompantes> listaDeOpciones;
-
+    public Button arroz, pure;
     
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuy
     private void Start()
     {
+        arroz = DishToBuy.Intance.root.Q<Button>("infArroz");
+        pure = DishToBuy.Intance.root.Q<Button>("infPure");
         listaDeOpciones = new List<Acompantes>();
         listaDeOpciones.Add(new Acompantes(Resources.Load<Sprite>("Arroz"), "Arroz", "Arroz blanco cocido perfectamente, ligero y esponjoso, listo para acompa�ar cualquier comida con su sencillez y versatilidad"));
         listaDeOpciones.Add( new Acompantes(Resources.Load<Sprite>("Pure"), "Pure", "Puré de papas cremoso y suave, preparado con mantequilla y leche, una deliciosa guarnici�n reconfortante que complementa cualquier plato principal"));
         
-        DishToBuy.Intance.acompanante.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
+        //DishToBuy.Intance.acompanante.botonPlato.RegisterCallback<ClickEvent>(Showprincio);
+        DishToBuy.Intance.acompanante.botonPlato.RegisterCallback<ClickEvent>(ShowListPrincipio);
+        arroz.RegisterCallback<ClickEvent,int>(Showprincio, 0);
+        pure.RegisterCallback<ClickEvent,int>(Showprincio, 1);
     }
 
+    /**
     void Showprincio(ClickEvent evt)
     {
         DishToBuy.Intance.mainScreen.style.display = DisplayStyle.None;
         DishToBuy.Intance.foodScreen.style.display = DisplayStyle.Flex;
+        DishToBuy.Intance.back.RegisterCallback<ClickEvent>(baack);
+        DishToBuy.Intance.next.RegisterCallback<ClickEvent>(goNextOption);
+        DishToBuy.Intance.chosee.RegisterCallback<ClickEvent>(ElegirThis);
+        id = 0;
+        ChangeMainScreen(listaDeOpciones[id]);
+    }**/
+    
+    void ShowListPrincipio(ClickEvent evt)
+    {
+        DishToBuy.Intance.plateScreen = DishToBuy.Intance.root.Q<ScrollView>("acompananteScreen");
+        DishToBuy.Intance.mainScreen.style.display = DisplayStyle.None;
+        DishToBuy.Intance.plateScreen.style.display = DisplayStyle.Flex;
+        DishToBuy.Intance.foodScreen.style.display = DisplayStyle.None;
         DishToBuy.Intance.back.RegisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.next.RegisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.chosee.RegisterCallback<ClickEvent>(ElegirThis);
@@ -50,6 +69,17 @@ public class Acompanante : MonoBehaviour
         baack(new ClickEvent());
         DishToBuy.Intance.goBuy();
     }
+    void Showprincio(ClickEvent evt, int _id)
+    {
+        DishToBuy.Intance.mainScreen.style.display = DisplayStyle.None;
+        DishToBuy.Intance.plateScreen.style.display = DisplayStyle.None;
+        DishToBuy.Intance.foodScreen.style.display = DisplayStyle.Flex;
+        DishToBuy.Intance.back.RegisterCallback<ClickEvent>(baack);
+        DishToBuy.Intance.next.RegisterCallback<ClickEvent>(goNextOption);
+        DishToBuy.Intance.chosee.RegisterCallback<ClickEvent>(ElegirThis);
+        id = _id;
+        ChangeMainScreen(listaDeOpciones[id]);
+    }
     
     void ChangeMainScreen( Acompantes choosenOption)
     {
@@ -58,11 +88,13 @@ public class Acompanante : MonoBehaviour
         DishToBuy.Intance.descriptionFood.text = choosenOption.descriptivo;
     }
     
+    
     void baack(ClickEvent evt)
     {
         id = 0;
         DishToBuy.Intance.mainScreen.style.display = DisplayStyle.Flex;
         DishToBuy.Intance.foodScreen.style.display = DisplayStyle.None;
+        DishToBuy.Intance.plateScreen.style.display = DisplayStyle.None;
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);

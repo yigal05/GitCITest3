@@ -22,7 +22,7 @@ namespace ScripsNewUI
         public boton proteina;
         public boton sopa;
         public boton bebidas;
-        private VisualElement root;
+        public VisualElement root;
         public VisualElement back;
         public DishChoosen plato;
         
@@ -33,8 +33,8 @@ namespace ScripsNewUI
         //screen que esta actualmente por defecto deberia ser main
         private VisualElement currentScreen;
 
-        public VisualElement mainScreen, foodScreen, appScreen , welcomeScreen, topBanner;
-        public ScrollView  buyScreen;
+        public VisualElement mainScreen, foodScreen,appScreen , welcomeScreen, topBanner;
+        public ScrollView  buyScreen,plateScreen;
         public VisualElement next,chosee, chooseLunch;
 
         public OrderManager ordenar;
