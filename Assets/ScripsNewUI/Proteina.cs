@@ -9,8 +9,10 @@ public class Proteina : MonoBehaviour
     private int id =0;
     public List<Proteinas> listaDeOpciones;
     public Button pollo,cerdo,pavo,pescado,huevo;
-
+    public Button AnadirPollo, AnadirCerdo, AnadirPavo, AnadirPescado, AnadirHuevo;
     
+
+
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuy
     private void Start()
     {
@@ -19,7 +21,12 @@ public class Proteina : MonoBehaviour
         pavo = DishToBuy.Intance.root.Q<Button>("infPavo");
         pescado = DishToBuy.Intance.root.Q<Button>("infPescado");
         huevo = DishToBuy.Intance.root.Q<Button>("infHuevo");
-        
+        AnadirPollo = DishToBuy.Intance.root.Q<Button>("anadirPollo");
+        AnadirCerdo = DishToBuy.Intance.root.Q<Button>("anadirCerdo");
+        AnadirPavo = DishToBuy.Intance.root.Q<Button>("anadirPavo");
+        AnadirPescado = DishToBuy.Intance.root.Q<Button>("anadirPescado");
+        AnadirHuevo = DishToBuy.Intance.root.Q<Button>("anadirHuevo");
+
         listaDeOpciones = new List<Proteinas>();
         listaDeOpciones.Add(new Proteinas(Resources.Load<Sprite>("Pollo"), "Pollo", "Pollo jugoso y tierno, sazonado con hierbas y especias, asado a la perfecci�n para un sabor delicioso y una experiencia de comida satisfactoria"));
         listaDeOpciones.Add( new Proteinas(Resources.Load<Sprite>("Cerdo"), "Cerdo", "Trozos de cerdo tierno y jugoso, cocinados lentamente en una salsa arom�tica que realza su sabor �nico y lo convierte en una opci�n deliciosa para cualquier comida."));
@@ -34,6 +41,13 @@ public class Proteina : MonoBehaviour
         pavo.RegisterCallback<ClickEvent,int>(Showprincio, 2);
         pescado.RegisterCallback<ClickEvent,int>(Showprincio, 3);
         huevo.RegisterCallback<ClickEvent,int>(Showprincio, 4);
+
+        AnadirPollo.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
+        AnadirCerdo.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
+        AnadirPavo.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
+        AnadirPescado.RegisterCallback<ClickEvent, int>(AnadirPlato, 3);
+        AnadirHuevo.RegisterCallback<ClickEvent, int>(AnadirPlato, 4);
+
     }
 
     /**
@@ -112,6 +126,18 @@ public class Proteina : MonoBehaviour
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
+    }
+
+    void AnadirPlato(ClickEvent evt, int _id)
+    {
+        DishToBuy.Intance.plato.proteina = listaDeOpciones[_id].titulo;
+        DishToBuy.Intance.proteina.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0, 0, 0, 110));
+
+        // Regresar a la pantalla principal después de añadir el plato
+        baack(evt);
+
+        // Aquí puedes añadir cualquier otra lógica que necesites antes de ir a la pantalla de compra
+        DishToBuy.Intance.goBuy();
     }
 }
 

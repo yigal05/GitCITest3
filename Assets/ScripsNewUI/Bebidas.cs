@@ -12,6 +12,7 @@ public class Bebidas : MonoBehaviour
 
 
     public Button limonada,mora,fresa,cafe,mango;
+    public Button AnadirLimonada, AnadirMora, AnadirFresa, AnadirCafe, AnadirMango;
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuy
     private void Start()
     {
@@ -20,6 +21,13 @@ public class Bebidas : MonoBehaviour
         fresa = DishToBuy.Intance.root.Q<Button>("infFresa");
         cafe = DishToBuy.Intance.root.Q<Button>("infCafe");
         mango = DishToBuy.Intance.root.Q<Button>("infMango");
+        AnadirLimonada = DishToBuy.Intance.root.Q<Button>("anadirLimonada");
+        AnadirMora = DishToBuy.Intance.root.Q<Button>("anadirMora");
+        AnadirFresa = DishToBuy.Intance.root.Q<Button>("anadirFresa");
+        AnadirCafe = DishToBuy.Intance.root.Q<Button>("anadirCafe");
+        AnadirMango = DishToBuy.Intance.root.Q<Button>("anadirMango");
+
+
         listaDeOpciones = new List<Bebida>();
         listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("Limonada"), "Limonada", "Limonada, una refrescante bebida preparada con jugo de lim�n reci�n exprimido, endulzada con aguapanela y mezclada con agua fr�a. Una opci�n deliciosa y revitalizante para calmar la sed en d�as calurosos"));
         listaDeOpciones.Add(new Bebida(Resources.Load<Sprite>("Mora"), "Mora", "Jugo de mora, una bebida refrescante hecha con jugo natural de mora, endulzado con az�car y servido sobre hielo. Una delicia frutal con un toque dulce y �cido que deleita el paladar."));
@@ -34,6 +42,12 @@ public class Bebidas : MonoBehaviour
         fresa.RegisterCallback<ClickEvent,int>(Showprincio, 2);
         cafe.RegisterCallback<ClickEvent,int>(Showprincio, 3);
         mango.RegisterCallback<ClickEvent,int>(Showprincio, 4);
+
+        AnadirLimonada.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
+        AnadirMora.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
+        AnadirFresa.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
+        AnadirCafe.RegisterCallback<ClickEvent, int>(AnadirPlato, 3);
+        AnadirMango.RegisterCallback<ClickEvent, int>(AnadirPlato, 4);
     }
 
     void Showprincio(ClickEvent evt)
@@ -109,6 +123,18 @@ public class Bebidas : MonoBehaviour
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);;
+    }
+
+    void AnadirPlato(ClickEvent evt, int _id)
+    {
+        DishToBuy.Intance.plato.bebidas = listaDeOpciones[_id].titulo;
+        DishToBuy.Intance.bebidas.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0, 0, 0, 110));
+
+        // Regresar a la pantalla principal después de añadir el plato
+        baack(evt);
+
+        // Aquí puedes añadir cualquier otra lógica que necesites antes de ir a la pantalla de compra
+        DishToBuy.Intance.goBuy();
     }
 }
 

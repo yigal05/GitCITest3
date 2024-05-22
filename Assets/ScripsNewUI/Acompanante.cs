@@ -9,12 +9,16 @@ public class Acompanante : MonoBehaviour
     private int id =0;
     public List<Acompantes> listaDeOpciones;
     public Button arroz, pure;
-    
+    public Button AnadirArroz, AnadirPure;
+
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuy
     private void Start()
     {
         arroz = DishToBuy.Intance.root.Q<Button>("infArroz");
         pure = DishToBuy.Intance.root.Q<Button>("infPure");
+        AnadirArroz = DishToBuy.Intance.root.Q<Button>("anadirArroz");
+        AnadirPure = DishToBuy.Intance.root.Q<Button>("anadirPure");
+
         listaDeOpciones = new List<Acompantes>();
         listaDeOpciones.Add(new Acompantes(Resources.Load<Sprite>("Arroz"), "Arroz", "Arroz blanco cocido perfectamente, ligero y esponjoso, listo para acompa�ar cualquier comida con su sencillez y versatilidad"));
         listaDeOpciones.Add( new Acompantes(Resources.Load<Sprite>("Pure"), "Pure", "Puré de papas cremoso y suave, preparado con mantequilla y leche, una deliciosa guarnici�n reconfortante que complementa cualquier plato principal"));
@@ -23,6 +27,9 @@ public class Acompanante : MonoBehaviour
         DishToBuy.Intance.acompanante.botonPlato.RegisterCallback<ClickEvent>(ShowListPrincipio);
         arroz.RegisterCallback<ClickEvent,int>(Showprincio, 0);
         pure.RegisterCallback<ClickEvent,int>(Showprincio, 1);
+
+        AnadirArroz.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
+        AnadirPure.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
     }
 
     /**
@@ -100,6 +107,18 @@ public class Acompanante : MonoBehaviour
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
         
+    }
+
+    void AnadirPlato(ClickEvent evt, int _id)
+    {
+        DishToBuy.Intance.plato.acompanante = listaDeOpciones[_id].titulo;
+        DishToBuy.Intance.acompanante.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0, 0, 0, 110));
+
+        // Regresar a la pantalla principal después de añadir el plato
+        baack(evt);
+
+        // Aquí puedes añadir cualquier otra lógica que necesites antes de ir a la pantalla de compra
+        DishToBuy.Intance.goBuy();
     }
 }
 

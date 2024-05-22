@@ -41,6 +41,8 @@ namespace ScripsNewUI
         public Label comprar;
         private DatabaseReference databaseReference;
 
+        public Button AnadirButton;
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.A))
@@ -75,7 +77,9 @@ namespace ScripsNewUI
                 next = root.Q<VisualElement>("next");
                 back = root.Q<VisualElement>("back");
                 chosee = root.Q<VisualElement>("Choose-n");
+                AnadirButton = root.Q<Button>("anadirButton");
                 plato = new DishChoosen();
+                
                 
                 principio.botonPlato = root.Q<VisualElement>("Principio-n");
                 principio.bordenBoton =root.Q<VisualElement>("bordePrincipio");

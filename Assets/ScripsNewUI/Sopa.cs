@@ -12,13 +12,18 @@ public class Sopa : MonoBehaviour
 
 
     public Button ajiaco, sancocho, sopaDePollo;
-    
+    public Button AnadirAjiaco, AnadirSancocho, AnadirSopadepollo;
+
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuy
     private void Start()
     {
         ajiaco = DishToBuy.Intance.root.Q<Button>("infAjiaco");
-        sancocho = DishToBuy.Intance.root.Q<Button>("infSopaPollo");
+        sancocho = DishToBuy.Intance.root.Q<Button>("InfSancocho");
         sopaDePollo = DishToBuy.Intance.root.Q<Button>("infSopaPollo");
+        AnadirAjiaco = DishToBuy.Intance.root.Q<Button>("anadirAjiaco");
+        AnadirSancocho = DishToBuy.Intance.root.Q<Button>("anadirSancocho");
+        AnadirSopadepollo = DishToBuy.Intance.root.Q<Button>("anadirSopadepollo");
+
         listaDeOpciones = new List<Sopas>();
         listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("Ajiaco"), "Ajiaco", "Ajiaco, una sabrosa sopa colombiana, hecha con pollo, papas, maíz, yuca y guascas, sazonada con cilantro y servida con alcaparras y crema. Una delicia reconfortante y llena de sabor que representa la riqueza culinaria de Colombia."));
         listaDeOpciones.Add(new Sopas(Resources.Load<Sprite>("Sancocho"), "Sancocho", "Sancocho, un guiso tradicional latinoamericano, preparado con una variedad de carnes, plátanos, yuca, ñame, maíz y otras verduras, cocidas lentamente en un caldo aromático sazonado con hierbas y especias. Un plato reconfortante y abundante que es una verdadera fiesta para el paladar"));
@@ -29,6 +34,10 @@ public class Sopa : MonoBehaviour
         ajiaco.RegisterCallback<ClickEvent,int>(Showprincio, 0);
         sancocho.RegisterCallback<ClickEvent,int>(Showprincio, 1);
         sopaDePollo.RegisterCallback<ClickEvent,int>(Showprincio, 2);
+
+        AnadirAjiaco.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
+        AnadirSancocho.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
+        AnadirSopadepollo.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
     }
 
     void Showprincio(ClickEvent evt)
@@ -103,6 +112,18 @@ public class Sopa : MonoBehaviour
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
+    }
+
+    void AnadirPlato(ClickEvent evt, int _id)
+    {
+        DishToBuy.Intance.plato.sopa = listaDeOpciones[_id].titulo;
+        DishToBuy.Intance.sopa.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0, 0, 0, 110));
+
+        // Regresar a la pantalla principal después de añadir el plato
+        baack(evt);
+
+        // Aquí puedes añadir cualquier otra lógica que necesites antes de ir a la pantalla de compra
+        DishToBuy.Intance.goBuy();
     }
 }
 

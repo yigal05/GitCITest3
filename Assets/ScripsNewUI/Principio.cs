@@ -10,16 +10,24 @@ public class Principio : MonoBehaviour
     public List<Principios> listaDeOpciones;
 
     public Button frijoles,lentejas,pastas;
-    
 
-    
+    public Button AnadirFrijoles;
+    public Button AnadirLentejas;
+    public Button AnadirPasta;
+
+
+
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuy
     private void Start()
     {
         frijoles = DishToBuy.Intance.root.Q<Button>("infFrijoles");
         lentejas = DishToBuy.Intance.root.Q<Button>("InfLentejas");
         pastas = DishToBuy.Intance.root.Q<Button>("infPasta");
-        
+        AnadirFrijoles = DishToBuy.Intance.root.Q<Button>("anadirFrijoles");
+        AnadirLentejas = DishToBuy.Intance.root.Q<Button>("anadirLentejas");
+        AnadirPasta = DishToBuy.Intance.root.Q<Button>("anadirPasta");
+
+
         listaDeOpciones = new List<Principios>();
         listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("Frijoles"), "Frijoles", "Deliciosos frijoles cocidos lentamente en una sabrosa mezcla de especias."));
         listaDeOpciones.Add(new Principios(Resources.Load<Sprite>("Lentejas"), "Lentejas", "Lentejas cocinadas a fuego lento en un caldo arom�tico con cebolla, ajo y zanahorias, sazonadas con hierbas frescas como el tomillo y el laurel"));
@@ -30,6 +38,10 @@ public class Principio : MonoBehaviour
         frijoles.RegisterCallback<ClickEvent,int>(Showprincio, 0);
         lentejas.RegisterCallback<ClickEvent,int>(Showprincio, 1);
         pastas.RegisterCallback<ClickEvent,int>(Showprincio, 2);
+
+        AnadirFrijoles.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
+        AnadirLentejas.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
+        AnadirPasta.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
     }
     
     /**
@@ -105,6 +117,18 @@ public class Principio : MonoBehaviour
         DishToBuy.Intance.chosee.UnregisterCallback<ClickEvent>(ElegirThis);
         DishToBuy.Intance.next.UnregisterCallback<ClickEvent>(goNextOption);
         DishToBuy.Intance.back.UnregisterCallback<ClickEvent>(baack);
+    }
+
+    void AnadirPlato(ClickEvent evt, int _id)
+    {
+        DishToBuy.Intance.plato.principio = listaDeOpciones[_id].titulo;
+        DishToBuy.Intance.principio.bordenBoton.style.backgroundColor = new StyleColor(new Color32(0, 0, 0, 110));
+
+        // Regresar a la pantalla principal después de añadir el plato
+        baack(evt);
+
+        // Aquí puedes añadir cualquier otra lógica que necesites antes de ir a la pantalla de compra
+        DishToBuy.Intance.goBuy();
     }
 
 }
