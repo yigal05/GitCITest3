@@ -42,7 +42,10 @@ public class emailPassLogin : MonoBehaviour
     private Label lb_goLogin;
     private Label lb_warningSignUp;
     private Button bt_googleLoginButton;
+    private Button bt_googleLoginButton2;
+
     
+
     private void Awake()
     {
         
@@ -84,6 +87,10 @@ public class emailPassLogin : MonoBehaviour
 
         bt_googleLoginButton = root.Q<Button>("googleLoginButton");
         bt_googleLoginButton.RegisterCallback<ClickEvent>(GoogleSignInClick);
+
+        bt_googleLoginButton2 = root.Q<Button>("googleLoginButton2");
+        bt_googleLoginButton2.RegisterCallback<ClickEvent>(GoogleSignInClick);
+
 
     }
 
@@ -443,10 +450,10 @@ public class emailPassLogin : MonoBehaviour
 
     void EnterInApp()
     {
-        SceneManager.LoadScene("Scenes/NewUI", LoadSceneMode.Single);
+        SceneManager.LoadScene("Scenes/NewUI");
     }
 
-    
+  
     #endregion
 
 }

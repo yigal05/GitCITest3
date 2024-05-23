@@ -11,6 +11,8 @@
                 <ui:TextField picking-mode="Ignore" name="passwordText" class="enterText" />
                 <ui:Button text="LOGIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="loginButton" />
                 <ui:Label tabindex="-1" text="DONT HAVE AN ACCOUNT?&#10;CLICK TO SING UP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="singUpLabel" style="-unity-text-align: upper-center; margin-top: 19px;" />
+                <ui:Label tabindex="-1" text="O inicia sesión con Google" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Button text="&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="googleLoginButton2" style="background-image: url(&quot;project://database/Assets/googleloginbtn.png?fileID=2800000&amp;guid=b222b36909aaf9f4cb9b303aeedaf5e9&amp;type=3#googleloginbtn&quot;); background-color: rgba(188, 188, 188, 0); width: 30px; height: 30px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);" />
                 <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="warnings" />
             </ui:VisualElement>
         </ui:VisualElement>
@@ -26,8 +28,8 @@
                 <ui:Button text="SIGN UP" parse-escape-sequences="true" display-tooltip-when-elided="true" name="signUPButton" />
                 <ui:Label tabindex="-1" text="ALREADY HAVE AN ACCOUNT?&#10;CLICK HERE TO LOGIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="loginLabel" style="-unity-text-align: upper-center; margin-top: 19px;" />
                 <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="warningSignUp" style="flex-wrap: wrap;" />
-                <ui:Label tabindex="-1" text="O inicia sesión con Google" parse-escape-sequences="true" display-tooltip-when-elided="true" />
-                <ui:Button text="Google" parse-escape-sequences="true" display-tooltip-when-elided="true" name="googleLoginButton" />
+                <ui:Label tabindex="-1" text="O regístrate con Google" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                <ui:Button text="&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="googleLoginButton" style="background-image: url(&quot;project://database/Assets/googleloginbtn.png?fileID=2800000&amp;guid=b222b36909aaf9f4cb9b303aeedaf5e9&amp;type=3#googleloginbtn&quot;); background-color: rgba(188, 188, 188, 0); width: 30px; height: 30px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
