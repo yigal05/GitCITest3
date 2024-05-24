@@ -4,8 +4,8 @@
         <ui:VisualElement name="Header" style="flex-grow: 0; flex-direction: row; height: 8%; display: flex;">
             <ui:VisualElement name="back" style="flex-grow: 0; width: 10%; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-3753015318093942961&amp;guid=8ed13ea8d9005d24b88e95b579a0c7b3&amp;type=3#arrow-left&quot;); background-color: rgb(0, 0, 0);" />
             <ui:Label tabindex="-1" text="Tienes algo en mente?" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" style="font-size: 22px; -unity-text-align: middle-left; -unity-font-style: bold; width: 70%;" />
-            <ui:VisualElement name="VisualElement" style="flex-grow: 1; justify-content: center; align-items: center;">
-                <ui:VisualElement style="flex-grow: 0; background-image: url(&quot;project://database/Assets/icons/usuario.png?fileID=2800000&amp;guid=7571bb09db4ea874796daf6ac3d08716&amp;type=3#usuario&quot;); width: 70%; height: 70%; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; background-color: rgb(101, 190, 112);" />
+            <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center;">
+                <ui:VisualElement name="usuario2" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/icons/usuario.png?fileID=2800000&amp;guid=7571bb09db4ea874796daf6ac3d08716&amp;type=3#usuario&quot;); width: 70%; height: 70%; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; background-color: rgb(101, 190, 112);" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="MainScreen" style="flex-grow: 1; display: flex;">
@@ -313,6 +313,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:ScrollView>
+        <ui:VisualElement name="CerrarSesion2" style="flex-grow: 1; display: none;">
+            <ui:Button text="Cerrar Sesion" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cerrarSesionButton2" />
+        </ui:VisualElement>
         <ui:VisualElement name="optionsBar" style="flex-grow: 0; height: 8%; flex-direction: row;">
             <ui:VisualElement name="VisualElement" class="buttonOptionBar" style="flex-grow: 0;">
                 <ui:VisualElement name="iconoOpBar" class="iconOptionsBar" style="background-image: url(&quot;project://database/Assets/icons/hogar%20(1).png?fileID=2800000&amp;guid=897d5bb6d1695b44caea21bf1e0f4f30&amp;type=3#hogar (1)&quot;); -unity-background-image-tint-color: rgb(0, 0, 0);" />

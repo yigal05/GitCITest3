@@ -450,7 +450,7 @@ public class emailPassLogin : MonoBehaviour
 
     void EnterInApp()
     {
-        SceneManager.LoadScene("Scenes/NewUI");
+        SceneManager.LoadScene("Scenes/UI2");
     }
 
   

@@ -12,11 +12,11 @@ public struct boton
     public VisualElement botonPlato;
     public VisualElement bordenBoton;
 }
+
 namespace ScripsNewUI
 {
     public class DishToBuy : MonoBehaviour
     {
-
         //singleton
         public static DishToBuy Intance;
         // Botones que seran presionados para ir a ese menu
@@ -60,13 +60,17 @@ namespace ScripsNewUI
             {
                 Intance = this;
                 SceneManager.sceneLoaded += OnSceneLoaded;
-
+                Debug.Log("DishToBuy Awake: SceneManager.sceneLoaded suscrito");
                 InitializeUIElements();
+
+
             }
         }
 
         private void InitializeUIElements()
         {
+            Debug.Log("DishToBuy: InitializeUIElements llamado");
+
             root = GetComponent<UIDocument>().rootVisualElement;
 
             foodImage = root.Q<VisualElement>("imageFood-n");
@@ -80,9 +84,9 @@ namespace ScripsNewUI
             welcomeScreen = root.Q<VisualElement>("Welcome");
             topBanner = root.Q<VisualElement>("Header");
             buyScreen = root.Q<ScrollView>("BuyScreen");
-            userButton = root.Q<VisualElement>("usuario");
-            logoutButton = root.Q<Button>("cerrarSesionButton");
-            logoutPanel = root.Q<VisualElement>("CerrarSesion");
+            userButton = root.Q<VisualElement>("usuario2");
+            logoutButton = root.Q<Button>("cerrarSesionButton2");
+            logoutPanel = root.Q<VisualElement>("CerrarSesion2");
 
             next = root.Q<VisualElement>("next");
             back = root.Q<VisualElement>("back");
@@ -105,8 +109,8 @@ namespace ScripsNewUI
             bebidas.botonPlato = root.Q<VisualElement>("Bebidas-n");
             bebidas.bordenBoton = root.Q<VisualElement>("bordeBebidas");
 
-            chooseLunch = root.Q<VisualElement>("goApp_n");
-            chooseLunch.RegisterCallback<ClickEvent>(GoToMainMenu);
+            //chooseLunch = root.Q<VisualElement>("goApp_n");
+            //chooseLunch.RegisterCallback<ClickEvent>(GoToMainMenu);
 
             userButton.RegisterCallback<ClickEvent>(ShowLogoutPanel);
             logoutButton.RegisterCallback<ClickEvent>(Logout);
@@ -123,43 +127,68 @@ namespace ScripsNewUI
                 WebClientId = "737799834196-lg6mapd3763f7abnsfm2v242qbpk77el.apps.googleusercontent.com",
                 RequestIdToken = true
             };
+
+            Debug.Log("DishToBuy: InitializeUIElements completado");
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (scene.name == "NewUI" +
-                "" +
-                "" +
-                "")
+            if (scene.name == "UI2")
             {
+                Debug.Log("DishToBuy: OnSceneLoaded llamado para dishToBuy");
                 InitializeUIElements();
+                appScreen.style.display = DisplayStyle.Flex;
+                mainScreen.style.display = DisplayStyle.Flex;
+                // Registra los eventos nuevamente
             }
         }
+
+        
 
         private void OnDestroy()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            Debug.Log("DishToBuy: SceneManager.sceneLoaded desuscrito");
         }
 
         private void ShowLogoutPanel(ClickEvent evt)
         {
-            appScreen.style.display = DisplayStyle.None;
+            mainScreen.style.display = DisplayStyle.None;
             logoutPanel.style.display = DisplayStyle.Flex;
+            Debug.Log("boton presionado");
         }
 
         private void Logout(ClickEvent evt)
         {
-            auth.SignOut();
-            GoogleSignIn.DefaultInstance.SignOut();
-            // Opcional: Redirigir al usuario a la pantalla de inicio de sesión o a la primera escena
-            SceneManager.LoadScene("LogRegScene");
+            try
+            {
+                ResetUIElements();
+                auth.SignOut();
+                GoogleSignIn.DefaultInstance.SignOut();
+
+                // Restablece la UI antes de cargar la nueva escena
+    
+                SceneManager.LoadScene("LogRegScene");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Error during logout: " + e.Message);
+            }
         }
 
-        public void GoToMainMenu(ClickEvent evt)
+        private void ResetUIElements()
+        {
+            mainScreen.style.display = DisplayStyle.None;
+            logoutPanel.style.display = DisplayStyle.None;
+            appScreen.style.display = DisplayStyle.None;
+            // Restablece cualquier otro elemento de UI si es necesario
+        }
+
+        /*public void GoToMainMenu(ClickEvent evt)
         {
             welcomeScreen.style.display = DisplayStyle.None;
             appScreen.style.display = DisplayStyle.Flex;
-        }
+        }*/
 
         public void goBuy()
         {
@@ -177,16 +206,10 @@ namespace ScripsNewUI
 
         void ChangeVisualElementImage(string spritePath)
         {
-            // Carga el Sprite desde la carpeta Resources
             Sprite sprite = Resources.Load<Sprite>(spritePath);
-
-            // Verifica si el Sprite se ha cargado correctamente
             if (sprite != null)
             {
-                // Crea una nueva imagen de fondo con el Sprite
                 var backgroundImage = new StyleBackground(sprite);
-
-                // Asigna la nueva imagen de fondo al VisualElement
                 foodImageBuy.style.backgroundImage = backgroundImage;
             }
             else
@@ -197,6 +220,12 @@ namespace ScripsNewUI
 
         void BuyDish(ClickEvent evr)
         {
+            Debug.Log("DishToBuy: BuyDish llamado");
+            if (ordenar == null)
+            {
+                Debug.LogError("DishToBuy: OrderManager no está asignado");
+                return;
+            }
             ordenar.AddToOrder(plato.principio);
             ordenar.AddToOrder(plato.acompanante);
             ordenar.AddToOrder(plato.proteina);
