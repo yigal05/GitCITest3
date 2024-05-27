@@ -24,7 +24,7 @@
                             <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/utensilios-de-plato.png?fileID=2800000&amp;guid=a9a5d697f0f77c14d82501f61361d561&amp;type=3#utensilios-de-plato&quot;);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
-                            <ui:Label tabindex="-1" text="Principio" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                            <ui:Label tabindex="-1" text="Principio" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start; font-size: 18px;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="Acompanante-n" class="menuButtonsLayout" style="flex-grow: 0;">
@@ -32,7 +32,7 @@
                             <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/tazon-de-arroz.png?fileID=2800000&amp;guid=98055c38cb3ee074abf783e17f18858e&amp;type=3#tazon-de-arroz&quot;);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
-                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                            <ui:Label tabindex="-1" text="Acompañante" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start; font-size: 18px;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="Proteina-n" class="menuButtonsLayout" style="flex-grow: 0;">
@@ -40,7 +40,7 @@
                             <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/carne.png?fileID=2800000&amp;guid=c897c7d9751b56647855a7a88a273df4&amp;type=3#carne&quot;);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
-                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                            <ui:Label tabindex="-1" text="Proteína" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: auto; font-size: 18px; align-self: auto;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="Sopas-n" class="menuButtonsLayout" style="flex-grow: 0;">
@@ -48,7 +48,7 @@
                             <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/sopa.png?fileID=2800000&amp;guid=ba217df77ee5818478652f981ee29094&amp;type=3#sopa&quot;);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
-                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                            <ui:Label tabindex="-1" text="Sopa" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start; font-size: 18px; align-self: auto;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="Bebidas-n" class="menuButtonsLayout" style="flex-grow: 0;">
@@ -56,7 +56,7 @@
                             <ui:VisualElement name="icon" class="iconElement" style="background-image: url(&quot;project://database/Assets/icons/swoosh-de-paja-de-copa.png?fileID=2800000&amp;guid=44a70ddbbf9b99a4aa810f10725bd5d4&amp;type=3#swoosh-de-paja-de-copa&quot;);" />
                         </ui:VisualElement>
                         <ui:VisualElement name="typleElement" style="flex-grow: 0; align-items: center;">
-                            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start;" />
+                            <ui:Label tabindex="-1" text="Bebida" parse-escape-sequences="true" display-tooltip-when-elided="true" class="menuButtonsName" style="align-items: flex-start; font-size: 18px;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
@@ -314,7 +314,14 @@
             </ui:VisualElement>
         </ui:ScrollView>
         <ui:VisualElement name="CerrarSesion2" style="flex-grow: 1; display: none;">
-            <ui:Button text="Cerrar Sesion" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cerrarSesionButton2" />
+            <ui:Button text="Cerrar Sesión" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cerrarSesionButton2" style="margin-top: 6px; -unity-font-style: bold; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="GraciasPorComprar" style="flex-grow: 1; justify-content: space-between; align-self: auto; background-color: rgba(108, 108, 108, 0.56); display: none;">
+            <ui:VisualElement name="GraciasPorComprar2" style="flex-grow: 0; height: 50%; width: 80%; flex-shrink: 0; align-self: center; justify-content: center; align-items: center; margin-top: 150px; margin-right: 0; margin-bottom: 0; margin-left: 0; -unity-text-align: upper-left; background-color: rgba(255, 255, 255, 0.93); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; display: flex;">
+                <ui:Label tabindex="-1" text="Pedido realizado" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 25px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="¡Muchas gracias por tu compra!" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 18px;" />
+                <ui:Button text="Cerrar" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CerrarButtonFinal" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; font-size: 16px; -unity-font-style: bold;" />
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="optionsBar" style="flex-grow: 0; height: 8%; flex-direction: row;">
             <ui:VisualElement name="VisualElement" class="buttonOptionBar" style="flex-grow: 0;">

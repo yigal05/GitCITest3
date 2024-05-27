@@ -84,6 +84,7 @@ namespace ScripsNewUI
             welcomeScreen = root.Q<VisualElement>("Welcome");
             topBanner = root.Q<VisualElement>("Header");
             buyScreen = root.Q<ScrollView>("BuyScreen");
+
             userButton = root.Q<VisualElement>("usuario2");
             logoutButton = root.Q<Button>("cerrarSesionButton2");
             logoutPanel = root.Q<VisualElement>("CerrarSesion2");
