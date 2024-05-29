@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Database;
+using Firebase.Extensions;
 using ScripsNewUI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,6 +15,16 @@ public class BebidasV2 : MonoBehaviour
 
     public Button limonada,mora,fresa,cafe,mango;
     public Button AnadirLimonada, AnadirMora, AnadirFresa, AnadirCafe, AnadirMango;
+
+    public Label limonadaQuantityLabel;
+    public Label moraQuantityLabel;
+    public Label fresaQuantityLabel;
+    public Label cafeQuantityLabel;
+    public Label mangoQuantityLabel;
+
+    private DatabaseReference databaseReference;
+
+    public Label disponibilidadLabelLimonada, disponibilidadLabelMora, disponibilidadLabelFresa, disponibilidadLabelCafe, disponibilidadLabelMango;
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuyV2
     private void Start()
     {
@@ -26,6 +38,18 @@ public class BebidasV2 : MonoBehaviour
         AnadirFresa = DishToBuyV2.Intance.root.Q<Button>("anadirFresa");
         AnadirCafe = DishToBuyV2.Intance.root.Q<Button>("anadirCafe");
         AnadirMango = DishToBuyV2.Intance.root.Q<Button>("anadirMango");
+
+        limonadaQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("LimonadaQuantityLabel");
+        moraQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("MoraQuantityLabel");
+        fresaQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("FresaQuantityLabel");
+        cafeQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("CafeQuantityLabel");
+        mangoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("MangoQuantityLabel");
+
+        disponibilidadLabelLimonada = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelLimonada");
+        disponibilidadLabelMora = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelMora");
+        disponibilidadLabelFresa = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelFresa");
+        disponibilidadLabelCafe = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelCafe");
+        disponibilidadLabelMango = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelMango");
 
 
         listaDeOpciones = new List<BebidaV2>();
@@ -48,7 +72,189 @@ public class BebidasV2 : MonoBehaviour
         AnadirFresa.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
         AnadirCafe.RegisterCallback<ClickEvent, int>(AnadirPlato, 3);
         AnadirMango.RegisterCallback<ClickEvent, int>(AnadirPlato, 4);
+
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        databaseReference.Child("options").ValueChanged += HandleValueChanged;
+
+        LoadDishQuantities();
     }
+
+    private void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        // Manejar los cambios en los datos de la base de datos
+        if (args.Snapshot.Exists)
+        {
+            foreach (DataSnapshot optionSnapshot in args.Snapshot.Children)
+            {
+                IDictionary option = (IDictionary)optionSnapshot.Value;
+                int categoryId = Convert.ToInt32(option["categoryId"]);
+                string name = option["name"].ToString();
+                int quantity = Convert.ToInt32(option["quantity"]);
+
+                if (categoryId == 5) // Principio
+                {
+                    // Actualizar los labels según el nombre de la opción
+                    if (name == "Limonada")
+                    {
+                        if (quantity <= 0)
+                        {
+                            limonadaQuantityLabel.text = "";
+                            disponibilidadLabelLimonada.text = "No disponible";
+                        }
+                        else
+                        {
+                            limonadaQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelLimonada.text = "Disponible:";
+                        }
+
+                    }
+                    else if (name == "Mora")
+                    {
+                        if (quantity <= 0)
+                        {
+                            moraQuantityLabel.text = "";
+                            disponibilidadLabelMora.text = "No disponible";
+                        }
+                        else
+                        {
+                            moraQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelMora.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Fresa")
+                    {
+                        if (quantity <= 0)
+                        {
+                            fresaQuantityLabel.text = "";
+                            disponibilidadLabelFresa.text = "No disponible";
+                        }
+                        else
+                        {
+                            fresaQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelFresa.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Cafe")
+                    {
+                        if (quantity <= 0)
+                        {
+                            cafeQuantityLabel.text = "";
+                            disponibilidadLabelCafe.text = "No disponible";
+                        }
+                        else
+                        {
+                            cafeQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelCafe.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Mango")
+                    {
+                        if (quantity <= 0)
+                        {
+                            mangoQuantityLabel.text = "";
+                            disponibilidadLabelMango.text = "No disponible";
+                        }
+                        else
+                        {
+                            mangoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelMango.text = "Disponible:";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void LoadDishQuantities()
+    {
+        databaseReference.Child("options").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result; // Obtener el snapshot de la base de datos
+
+                foreach (DataSnapshot optionSnapshot in snapshot.Children)
+                {
+                    IDictionary option = (IDictionary)optionSnapshot.Value;
+                    int categoryId = Convert.ToInt32(option["categoryId"]);
+                    string name = option["name"].ToString();
+                    int quantity = Convert.ToInt32(option["quantity"]);
+
+                    if (categoryId == 5) // Principio
+                    {
+                        if (name == "Limonada")
+                        {
+                            if (quantity <= 0)
+                            {
+                                limonadaQuantityLabel.text = "";
+                                disponibilidadLabelLimonada.text = "No disponible";
+                            }
+                            else
+                            {
+                                limonadaQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelLimonada.text = "Disponible:";
+                            }
+
+                        }
+                        else if (name == "Mora")
+                        {
+                            if (quantity <= 0)
+                            {
+                                moraQuantityLabel.text = "";
+                                disponibilidadLabelMora.text = "No disponible";
+                            }
+                            else
+                            {
+                                moraQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelMora.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Fresa")
+                        {
+                            if (quantity <= 0)
+                            {
+                                fresaQuantityLabel.text = "";
+                                disponibilidadLabelFresa.text = "No disponible";
+                            }
+                            else
+                            {
+                                fresaQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelFresa.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Cafe")
+                        {
+                            if (quantity <= 0)
+                            {
+                                cafeQuantityLabel.text = "";
+                                disponibilidadLabelCafe.text = "No disponible";
+                            }
+                            else
+                            {
+                                cafeQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelCafe.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Mango")
+                        {
+                            if (quantity <= 0)
+                            {
+                                mangoQuantityLabel.text = "";
+                                disponibilidadLabelMango.text = "No disponible";
+                            }
+                            else
+                            {
+                                mangoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelMango.text = "Disponible:";
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
+    }
+
 
     void Showprincio(ClickEvent evt)
     {

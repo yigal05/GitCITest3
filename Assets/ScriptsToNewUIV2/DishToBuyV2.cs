@@ -168,6 +168,8 @@ namespace ScripsNewUI
         private void ShowLogoutPanel(ClickEvent evt)
         {
             mainScreen.style.display = DisplayStyle.None;
+            foodScreen.style.display = DisplayStyle.None;
+            plateScreen.style.display = DisplayStyle.None;
             logoutPanel.style.display = DisplayStyle.Flex;
             Debug.Log("boton presionado");
         }
