@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Database;
+using Firebase.Extensions;
 using ScripsNewUI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,7 +12,16 @@ public class ProteinaV2 : MonoBehaviour
     public List<ProteinasV2> listaDeOpciones;
     public Button pollo,cerdo,pavo,pescado,huevo;
     public Button AnadirPollo, AnadirCerdo, AnadirPavo, AnadirPescado, AnadirHuevo;
-    
+
+    public Label polloQuantityLabel;
+    public Label cerdoQuantityLabel;
+    public Label pavoQuantityLabel;
+    public Label pescadoQuantityLabel;
+    public Label huevoQuantityLabel;
+
+    public Label disponibilidadLabelPollo, disponibilidadLabelCerdo, disponibilidadLabelPavo, disponibilidadLabelPescado, disponibilidadLabelHuevo;
+    private DatabaseReference databaseReference;
+
 
 
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuyV2
@@ -26,6 +37,18 @@ public class ProteinaV2 : MonoBehaviour
         AnadirPavo = DishToBuyV2.Intance.root.Q<Button>("anadirPavo");
         AnadirPescado = DishToBuyV2.Intance.root.Q<Button>("anadirPescado");
         AnadirHuevo = DishToBuyV2.Intance.root.Q<Button>("anadirHuevo");
+
+        polloQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("PolloQuantityLabel");
+        cerdoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("CerdoQuantityLabel");
+        pavoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("PavoQuantityLabel");
+        pescadoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("PescadoQuantityLabel");
+        huevoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("HuevoQuantityLabel");
+
+        disponibilidadLabelPollo = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelPollo");
+        disponibilidadLabelCerdo = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelCerdo");
+        disponibilidadLabelPavo = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelPavo");
+        disponibilidadLabelPescado = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelPescado");
+        disponibilidadLabelHuevo = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelHuevo");
 
         listaDeOpciones = new List<ProteinasV2>();
         listaDeOpciones.Add(new ProteinasV2(Resources.Load<Sprite>("Pollo"), "Pollo", "Pollo jugoso y tierno, sazonado con hierbas y especias, asado a la perfecci�n para un sabor delicioso y una experiencia de comida satisfactoria"));
@@ -48,6 +71,97 @@ public class ProteinaV2 : MonoBehaviour
         AnadirPescado.RegisterCallback<ClickEvent, int>(AnadirPlato, 3);
         AnadirHuevo.RegisterCallback<ClickEvent, int>(AnadirPlato, 4);
 
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        databaseReference.Child("options").ValueChanged += HandleValueChanged;
+
+        LoadDishQuantities();
+
+    }
+
+    private void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        // Manejar los cambios en los datos de la base de datos
+        if (args.Snapshot.Exists)
+        {
+            foreach (DataSnapshot optionSnapshot in args.Snapshot.Children)
+            {
+                IDictionary option = (IDictionary)optionSnapshot.Value;
+                int categoryId = Convert.ToInt32(option["categoryId"]);
+                string name = option["name"].ToString();
+                int quantity = Convert.ToInt32(option["quantity"]);
+
+                if (categoryId == 3) // Principio
+                {
+                    // Actualizar los labels según el nombre de la opción
+                    if (name == "Pollo")
+                    {
+                        if (quantity <= 0)
+                        {
+                            polloQuantityLabel.text = "";
+                            disponibilidadLabelPollo.text = "No disponible";
+                        }
+                        else
+                        {
+                            polloQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelPollo.text = "Disponible:";
+                        }
+
+                    }
+                    else if (name == "Cerdo")
+                    {
+                        if (quantity <= 0)
+                        {
+                            cerdoQuantityLabel.text = "";
+                            disponibilidadLabelCerdo.text = "No disponible";
+                        }
+                        else
+                        {
+                            cerdoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelCerdo.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Pavo")
+                    {
+                        if (quantity <= 0)
+                        {
+                            pavoQuantityLabel.text = "";
+                            disponibilidadLabelPavo.text = "No disponible";
+                        }
+                        else
+                        {
+                            pavoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelPavo.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Pescado")
+                    {
+                        if (quantity <= 0)
+                        {
+                            pescadoQuantityLabel.text = "";
+                            disponibilidadLabelPescado.text = "No disponible";
+                        }
+                        else
+                        {
+                            pescadoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelPescado.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Huevo")
+                    {
+                        if (quantity <= 0)
+                        {
+                            huevoQuantityLabel.text = "";
+                            disponibilidadLabelHuevo.text = "No disponible";
+                        }
+                        else
+                        {
+                            huevoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelHuevo.text = "Disponible:";
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -62,9 +176,96 @@ public class ProteinaV2 : MonoBehaviour
         id = 0;
         ChangeMainScreen(listaDeOpciones[id]);
     }**/
-    
-    
-    
+
+    private void LoadDishQuantities()
+    {
+        databaseReference.Child("options").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result; // Obtener el snapshot de la base de datos
+
+                foreach (DataSnapshot optionSnapshot in snapshot.Children)
+                {
+                    IDictionary option = (IDictionary)optionSnapshot.Value;
+                    int categoryId = Convert.ToInt32(option["categoryId"]);
+                    string name = option["name"].ToString();
+                    int quantity = Convert.ToInt32(option["quantity"]);
+
+                    if (categoryId == 3) // Principio
+                    {
+                        if (name == "Pollo")
+                        {
+                            if (quantity <= 0)
+                            {
+                                polloQuantityLabel.text = "";
+                                disponibilidadLabelPollo.text = "No disponible";
+                            }
+                            else
+                            {
+                                polloQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelPollo.text = "Disponible:";
+                            }
+
+                        }
+                        else if (name == "Cerdo")
+                        {
+                            if (quantity <= 0)
+                            {
+                                cerdoQuantityLabel.text = "";
+                                disponibilidadLabelCerdo.text = "No disponible";
+                            }
+                            else
+                            {
+                                cerdoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelCerdo.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Pavo")
+                        {
+                            if (quantity <= 0)
+                            {
+                                pavoQuantityLabel.text = "";
+                                disponibilidadLabelPavo.text = "No disponible";
+                            }
+                            else
+                            {
+                                pavoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelPavo.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Pescado")
+                        {
+                            if (quantity <= 0)
+                            {
+                                pescadoQuantityLabel.text = "";
+                                disponibilidadLabelPescado.text = "No disponible";
+                            }
+                            else
+                            {
+                                pescadoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelPescado.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Huevo")
+                        {
+                            if (quantity <= 0)
+                            {
+                                huevoQuantityLabel.text = "";
+                                disponibilidadLabelHuevo.text = "No disponible";
+                            }
+                            else
+                            {
+                                huevoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelHuevo.text = "Disponible:";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     void ShowListPrincipio(ClickEvent evt)
     {
         DishToBuyV2.Intance.plateScreen=DishToBuyV2.Intance.root.Q<ScrollView>("proteinaScreen");

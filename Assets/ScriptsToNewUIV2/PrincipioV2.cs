@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Database;
+using Firebase.Extensions;
 using ScripsNewUI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -15,6 +17,10 @@ public class PrincipioV2 : MonoBehaviour
     public Button AnadirLentejas;
     public Button AnadirPasta;
 
+    public Label frijolesQuantityLabel;
+    public Label lentejasQuantityLabel;
+    public Label pastaQuantityLabel, disponibilidadLabel, disponibilidadLabelLentejas, disponibilidadLabelPasta;
+    private DatabaseReference databaseReference;
 
 
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuyV2
@@ -27,6 +33,13 @@ public class PrincipioV2 : MonoBehaviour
         AnadirLentejas = DishToBuyV2.Intance.root.Q<Button>("anadirLentejas");
         AnadirPasta = DishToBuyV2.Intance.root.Q<Button>("anadirPasta");
 
+
+        frijolesQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("FrijolesQuantityLabel");
+        lentejasQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("LentejasQuantityLabel");
+        pastaQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("PastaQuantityLabel");
+        disponibilidadLabel = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabel");
+        disponibilidadLabelLentejas = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelLentejas");
+        disponibilidadLabelPasta = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelPasta");
 
         listaDeOpciones = new List<PrincipiosV2>();
         listaDeOpciones.Add(new PrincipiosV2(Resources.Load<Sprite>("Frijoles"), "Frijoles", "Deliciosos frijoles cocidos lentamente en una sabrosa mezcla de especias."));
@@ -42,8 +55,73 @@ public class PrincipioV2 : MonoBehaviour
         AnadirFrijoles.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
         AnadirLentejas.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
         AnadirPasta.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
+
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        databaseReference.Child("options").ValueChanged += HandleValueChanged;
+
+        LoadDishQuantities();
     }
-    
+
+    private void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        // Manejar los cambios en los datos de la base de datos
+        if (args.Snapshot.Exists)
+        {
+            foreach (DataSnapshot optionSnapshot in args.Snapshot.Children)
+            {
+                IDictionary option = (IDictionary)optionSnapshot.Value;
+                int categoryId = Convert.ToInt32(option["categoryId"]);
+                string name = option["name"].ToString();
+                int quantity = Convert.ToInt32(option["quantity"]);
+
+                if (categoryId == 1) // Principio
+                {
+                    // Actualizar los labels según el nombre de la opción
+                    if (name == "Frijoles")
+                    {
+                        if (quantity <= 0)
+                        {
+                            frijolesQuantityLabel.text = "";
+                            disponibilidadLabel.text = "No disponible";
+                        }
+                        else
+                        {
+                            frijolesQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabel.text = "Disponible:";
+                        }
+                        
+                    }
+                    else if (name == "Lentejas")
+                    {
+                        if (quantity <= 0)
+                        {
+                            lentejasQuantityLabel.text = "";
+                            disponibilidadLabelLentejas.text = "No disponible";
+                        }
+                        else
+                        {
+                            lentejasQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelLentejas.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Pasta")
+                    {
+                        if (quantity <= 0)
+                        {
+                            pastaQuantityLabel.text = "";
+                            disponibilidadLabelPasta.text = "No disponible";
+                        }
+                        else
+                        {
+                            pastaQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelPasta.text = "Disponible:";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /**
     void Showprincio(ClickEvent evt)
     {
@@ -56,7 +134,70 @@ public class PrincipioV2 : MonoBehaviour
         id = 0;
         ChangeMainScreen(listaDeOpciones[id]);
     }**/
-    
+    private void LoadDishQuantities()
+    {
+        databaseReference.Child("options").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result; // Obtener el snapshot de la base de datos
+
+                foreach (DataSnapshot optionSnapshot in snapshot.Children)
+                {
+                    IDictionary option = (IDictionary)optionSnapshot.Value;
+                    int categoryId = Convert.ToInt32(option["categoryId"]);
+                    string name = option["name"].ToString();
+                    int quantity = Convert.ToInt32(option["quantity"]);
+
+                    if (categoryId == 1) // Principio
+                    {
+                        if (name == "Frijoles")
+                        {
+                            if (quantity <= 0)
+                            {
+                                frijolesQuantityLabel.text = "";
+                                disponibilidadLabel.text = "No disponible";
+                            }
+                            else
+                            {
+                                frijolesQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabel.text = "Disponible:";
+                            }
+
+                        }
+                        else if (name == "Lentejas")
+                        {
+                            if (quantity <= 0)
+                            {
+                                lentejasQuantityLabel.text = "";
+                                disponibilidadLabelLentejas.text = "No disponible";
+                            }
+                            else
+                            {
+                                lentejasQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelLentejas.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Pasta")
+                        {
+                            if (quantity <= 0)
+                            {
+                                pastaQuantityLabel.text = "";
+                                disponibilidadLabelPasta.text = "No disponible";
+                            }
+                            else
+                            {
+                                pastaQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelPasta.text = "Disponible:";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+
     void ShowListPrincipio(ClickEvent evt)
     {
         DishToBuyV2.Intance.plateScreen=DishToBuyV2.Intance.root.Q<ScrollView>("PlateScreen");

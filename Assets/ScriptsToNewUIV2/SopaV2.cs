@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Database;
+using Firebase.Extensions;
 using ScripsNewUI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -14,6 +16,15 @@ public class SopaV2 : MonoBehaviour
     public Button ajiaco, sancocho, sopaDePollo;
     public Button AnadirAjiaco, AnadirSancocho, AnadirSopadepollo;
 
+    public Label ajiacoQuantityLabel;
+    public Label sancochoQuantityLabel;
+    public Label sopapolloQuantityLabel;
+
+    public Label disponibilidadLabelAjiaco, disponibilidadLabelSancocho, disponibilidadLabelSopapollo;
+    private DatabaseReference databaseReference;
+
+
+
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuyV2
     private void Start()
     {
@@ -23,6 +34,14 @@ public class SopaV2 : MonoBehaviour
         AnadirAjiaco = DishToBuyV2.Intance.root.Q<Button>("anadirAjiaco");
         AnadirSancocho = DishToBuyV2.Intance.root.Q<Button>("anadirSancocho");
         AnadirSopadepollo = DishToBuyV2.Intance.root.Q<Button>("anadirSopadepollo");
+
+        ajiacoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("AjiacoQuantityLabel");
+        sancochoQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("SancochoQuantityLabel");
+        sopapolloQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("SopapolloQuantityLabel");
+
+        disponibilidadLabelAjiaco = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelAjiaco");
+        disponibilidadLabelSancocho = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelSancocho");
+        disponibilidadLabelSopapollo = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelSopapollo");
 
         listaDeOpciones = new List<SopasV2>();
         listaDeOpciones.Add(new SopasV2(Resources.Load<Sprite>("Ajiaco"), "Ajiaco", "Ajiaco, una sabrosa sopa colombiana, hecha con pollo, papas, maíz, yuca y guascas, sazonada con cilantro y servida con alcaparras y crema. Una delicia reconfortante y llena de sabor que representa la riqueza culinaria de Colombia."));
@@ -38,7 +57,136 @@ public class SopaV2 : MonoBehaviour
         AnadirAjiaco.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
         AnadirSancocho.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
         AnadirSopadepollo.RegisterCallback<ClickEvent, int>(AnadirPlato, 2);
+
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        databaseReference.Child("options").ValueChanged += HandleValueChanged;
+
+        LoadDishQuantities();
     }
+
+    private void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        // Manejar los cambios en los datos de la base de datos
+        if (args.Snapshot.Exists)
+        {
+            foreach (DataSnapshot optionSnapshot in args.Snapshot.Children)
+            {
+                IDictionary option = (IDictionary)optionSnapshot.Value;
+                int categoryId = Convert.ToInt32(option["categoryId"]);
+                string name = option["name"].ToString();
+                int quantity = Convert.ToInt32(option["quantity"]);
+
+                if (categoryId == 4) // Principio
+                {
+                    // Actualizar los labels según el nombre de la opción
+                    if (name == "Ajiaco")
+                    {
+                        if (quantity <= 0)
+                        {
+                            ajiacoQuantityLabel.text = "";
+                            disponibilidadLabelAjiaco.text = "No disponible";
+                        }
+                        else
+                        {
+                            ajiacoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelAjiaco.text = "Disponible:";
+                        }
+
+                    }
+                    else if (name == "Sancocho")
+                    {
+                        if (quantity <= 0)
+                        {
+                            sancochoQuantityLabel.text = "";
+                            disponibilidadLabelSancocho.text = "No disponible";
+                        }
+                        else
+                        {
+                            sancochoQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelSancocho.text = "Disponible:";
+                        }
+                    }
+                    else if (name == "Sopa de Pollo")
+                    {
+                        if (quantity <= 0)
+                        {
+                            sopapolloQuantityLabel.text = "";
+                            disponibilidadLabelSopapollo.text = "No disponible";
+                        }
+                        else
+                        {
+                            sopapolloQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelSopapollo.text = "Disponible:";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void LoadDishQuantities()
+    {
+        databaseReference.Child("options").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result; // Obtener el snapshot de la base de datos
+
+                foreach (DataSnapshot optionSnapshot in snapshot.Children)
+                {
+                    IDictionary option = (IDictionary)optionSnapshot.Value;
+                    int categoryId = Convert.ToInt32(option["categoryId"]);
+                    string name = option["name"].ToString();
+                    int quantity = Convert.ToInt32(option["quantity"]);
+
+                    if (categoryId == 1) // Principio
+                    {
+                        if (name == "Ajiaco")
+                        {
+                            if (quantity <= 0)
+                            {
+                                ajiacoQuantityLabel.text = "";
+                                disponibilidadLabelAjiaco.text = "No disponible";
+                            }
+                            else
+                            {
+                                ajiacoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelAjiaco.text = "Disponible:";
+                            }
+
+                        }
+                        else if (name == "Sancocho")
+                        {
+                            if (quantity <= 0)
+                            {
+                                sancochoQuantityLabel.text = "";
+                                disponibilidadLabelSancocho.text = "No disponible";
+                            }
+                            else
+                            {
+                                sancochoQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelSancocho.text = "Disponible:";
+                            }
+                        }
+                        else if (name == "Sopa de Pollo")
+                        {
+                            if (quantity <= 0)
+                            {
+                                sopapolloQuantityLabel.text = "";
+                                disponibilidadLabelSopapollo.text = "No disponible";
+                            }
+                            else
+                            {
+                                sopapolloQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelSopapollo.text = "Disponible:";
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 
     void Showprincio(ClickEvent evt)
     {

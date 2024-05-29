@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Database;
+using Firebase.Extensions;
 using ScripsNewUI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,6 +12,11 @@ public class AcompananteV2 : MonoBehaviour
     public List<AcompantesV2> listaDeOpciones;
     public Button arroz, pure;
     public Button AnadirArroz, AnadirPure;
+    public Label arrozQuantityLabel;
+    public Label pureQuantityLabel;
+
+    public Label disponibilidadLabelArroz, disponibilidadLabelPure;
+    private DatabaseReference databaseReference;
 
     //es importante hacerse en el start ya que debemos esperar el awake de DishToBuyV2
     private void Start()
@@ -18,6 +25,11 @@ public class AcompananteV2 : MonoBehaviour
         pure = DishToBuyV2.Intance.root.Q<Button>("infPure");
         AnadirArroz = DishToBuyV2.Intance.root.Q<Button>("anadirArroz");
         AnadirPure = DishToBuyV2.Intance.root.Q<Button>("anadirPure");
+
+        arrozQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("ArrozQuantityLabel");
+        pureQuantityLabel = DishToBuyV2.Intance.root.Q<Label>("PureQuantityLabel");
+        disponibilidadLabelArroz= DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelArroz");
+        disponibilidadLabelPure = DishToBuyV2.Intance.root.Q<Label>("DisponibilidadLabelPure");
 
         listaDeOpciones = new List<AcompantesV2>();
         listaDeOpciones.Add(new AcompantesV2(Resources.Load<Sprite>("Arroz"), "Arroz", "Arroz blanco cocido perfectamente, ligero y esponjoso, listo para acompa�ar cualquier comida con su sencillez y versatilidad"));
@@ -30,7 +42,60 @@ public class AcompananteV2 : MonoBehaviour
 
         AnadirArroz.RegisterCallback<ClickEvent, int>(AnadirPlato, 0);
         AnadirPure.RegisterCallback<ClickEvent, int>(AnadirPlato, 1);
+
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        databaseReference.Child("options").ValueChanged += HandleValueChanged;
+
+        LoadDishQuantities();
     }
+
+    private void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        // Manejar los cambios en los datos de la base de datos
+        if (args.Snapshot.Exists)
+        {
+            foreach (DataSnapshot optionSnapshot in args.Snapshot.Children)
+            {
+                IDictionary option = (IDictionary)optionSnapshot.Value;
+                int categoryId = Convert.ToInt32(option["categoryId"]);
+                string name = option["name"].ToString();
+                int quantity = Convert.ToInt32(option["quantity"]);
+
+                if (categoryId == 2) // Acompañante
+                {
+                    // Actualizar los labels según el nombre de la opción
+                    if (name == "Arroz")
+                    {
+                        if (quantity <= 0)
+                        {
+                            arrozQuantityLabel.text = "";
+                            disponibilidadLabelArroz.text = "No disponible";
+                        }
+                        else
+                        {
+                            arrozQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelArroz.text = "Disponible:";
+                        }
+
+                    }
+                    else if (name == "Pure")
+                    {
+                        if (quantity <= 0)
+                        {
+                            pureQuantityLabel.text = "";
+                            disponibilidadLabelPure.text = "No disponible";
+                        }
+                        else
+                        {
+                            pureQuantityLabel.text = quantity.ToString();
+                            disponibilidadLabelPure.text = "Disponible:";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     /**
     void Showprincio(ClickEvent evt)
@@ -43,7 +108,56 @@ public class AcompananteV2 : MonoBehaviour
         id = 0;
         ChangeMainScreen(listaDeOpciones[id]);
     }**/
-    
+    private void LoadDishQuantities()
+    {
+        databaseReference.Child("options").GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result; // Obtener el snapshot de la base de datos
+
+                foreach (DataSnapshot optionSnapshot in snapshot.Children)
+                {
+                    IDictionary option = (IDictionary)optionSnapshot.Value;
+                    int categoryId = Convert.ToInt32(option["categoryId"]);
+                    string name = option["name"].ToString();
+                    int quantity = Convert.ToInt32(option["quantity"]);
+
+                    if (categoryId == 2) // Principio
+                    {
+                        if (name == "Arroz")
+                        {
+                            if (quantity <= 0)
+                            {
+                                arrozQuantityLabel.text = "";
+                                disponibilidadLabelArroz.text = "No disponible";
+                            }
+                            else
+                            {
+                                arrozQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelArroz.text = "Disponible:";
+                            }
+
+                        }
+                        else if (name == "Pure")
+                        {
+                            if (quantity <= 0)
+                            {
+                                pureQuantityLabel.text = "";
+                                disponibilidadLabelPure.text = "No disponible";
+                            }
+                            else
+                            {
+                                pureQuantityLabel.text = quantity.ToString();
+                                disponibilidadLabelPure.text = "Disponible:";
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
+    }
     void ShowListPrincipio(ClickEvent evt)
     {
         DishToBuyV2.Intance.plateScreen = DishToBuyV2.Intance.root.Q<ScrollView>("acompananteScreen");

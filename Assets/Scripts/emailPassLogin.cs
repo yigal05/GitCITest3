@@ -25,7 +25,7 @@ public class emailPassLogin : MonoBehaviour
     //pantallas
     private VisualElement loginScreen;
     private VisualElement signUpScreen;
-    
+
     //botones Login
     private TextField email;
     private TextField password;
@@ -33,7 +33,7 @@ public class emailPassLogin : MonoBehaviour
     private Button bt_logging;
     private Label lb_GoSignup;
     private Label lb_warning;
-    
+
     //botones de register
     private TextField emailSignUp;
     private TextField passwordSignUp;
@@ -44,11 +44,11 @@ public class emailPassLogin : MonoBehaviour
     private Button bt_googleLoginButton;
     private Button bt_googleLoginButton2;
 
-    
+
 
     private void Awake()
     {
-        
+
         configuration = new GoogleSignInConfiguration
         {
             WebClientId = GoogleWebAPI,
@@ -57,32 +57,32 @@ public class emailPassLogin : MonoBehaviour
 
 
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
-        
-        loginScreen= root.Q<VisualElement>("loginScreen");
-        signUpScreen= root.Q<VisualElement>("registerScreen");
-        
+
+        loginScreen = root.Q<VisualElement>("loginScreen");
+        signUpScreen = root.Q<VisualElement>("registerScreen");
+
         email = root.Q<TextField>("emailText");
         password = root.Q<TextField>("passwordText");
         bt_goDatabase = root.Q<Button>("goDatabase");
         bt_logging = root.Q<Button>("loginButton");
         lb_GoSignup = root.Q<Label>("singUpLabel");
         lb_warning = root.Q<Label>("warnings");
-        
+
         //inicializacion de botones del register
         emailSignUp = root.Q<TextField>("emailTextSignUP");
-        passwordSignUp= root.Q<TextField>("passwordTextSignUp");
-        passwordConfirm=root.Q<TextField>("passwordTextSignUpC");
-        bt_signUp= root.Q<Button>("signUPButton");
+        passwordSignUp = root.Q<TextField>("passwordTextSignUp");
+        passwordConfirm = root.Q<TextField>("passwordTextSignUpC");
+        bt_signUp = root.Q<Button>("signUPButton");
         lb_goLogin = root.Q<Label>("loginLabel");
-        lb_warningSignUp=root.Q<Label>("warningSignUp");
+        lb_warningSignUp = root.Q<Label>("warningSignUp");
 
-        
+
         bt_logging.RegisterCallback<ClickEvent>(Login);
         lb_GoSignup.RegisterCallback<ClickEvent>((evt) =>
-            { loginScreen.style.display = DisplayStyle.None; signUpScreen.style.display = DisplayStyle.Flex; });
+        { loginScreen.style.display = DisplayStyle.None; signUpScreen.style.display = DisplayStyle.Flex; });
         lb_goLogin.RegisterCallback<ClickEvent>((evt) =>
-            { loginScreen.style.display = DisplayStyle.Flex; signUpScreen.style.display = DisplayStyle.None; });
-        
+        { loginScreen.style.display = DisplayStyle.Flex; signUpScreen.style.display = DisplayStyle.None; });
+
         bt_signUp.RegisterCallback<ClickEvent>(SignUp);
 
         bt_googleLoginButton = root.Q<Button>("googleLoginButton");
@@ -134,10 +134,10 @@ public class emailPassLogin : MonoBehaviour
             emailSignUp.value = "";
             passwordSignUp.value = "";
             passwordConfirm.value = "";
-            
+
 
             SendEmailVerification();
-            
+
         });
     }
 
@@ -145,7 +145,7 @@ public class emailPassLogin : MonoBehaviour
     {
         lb_warningSignUp.text = message;
     }
-    
+
     public void SendEmailVerification()
     {
         StartCoroutine(SendEmailForVerificationAsync());
@@ -361,7 +361,7 @@ public class emailPassLogin : MonoBehaviour
             }
             if (task.IsFaulted)
             {
-              
+
                 Debug.LogError("SignInAndRetrieveDataWithCredentialAsync encountered an error: " + task.Exception);
                 lb_warning.text = "Verificar el correo o la contraseña";
                 return;
@@ -381,7 +381,7 @@ public class emailPassLogin : MonoBehaviour
 
         if (user.IsEmailVerified)
         {
-            
+
             SetLoginStatus("Inicio de sesión exitoso.");
             EnterInApp();
         }
@@ -453,7 +453,7 @@ public class emailPassLogin : MonoBehaviour
         SceneManager.LoadScene("Scenes/UI2");
     }
 
-  
+
     #endregion
 
 }
